@@ -1,4 +1,4 @@
-module FSM_behav(out, E, W, clk);
+module FSM_behav(out, E, W, clk); //Case statement needed
 	input E, W, clk;
 	output out;
 	reg Q1, Q2, Q1B, Q2B, z;
@@ -55,6 +55,6 @@ module FSM_behav_test;
 		#5 Clk = 1;
 		#5 Clk = 0;
 
-		#100 $finish;
+		#100 $finish();
 	end
 endmodule

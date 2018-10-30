@@ -68,6 +68,8 @@ module Test_shift_add;
 	#38 start = 1;
 	A = 4'b1111;    B = 4'b0011;
 	#3 start = 0;
+	
+	#40 $finish();
 	end
 
 	always

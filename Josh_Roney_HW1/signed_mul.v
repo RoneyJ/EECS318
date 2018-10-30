@@ -54,6 +54,8 @@ module Test_signed();
 	#20
 	// -10 * -11
 	A = 5'b10110;	B = 5'b10101;
+	
+	#20 $finish();
 	end
 	signed_mult m1(A, B, P);
 endmodule
