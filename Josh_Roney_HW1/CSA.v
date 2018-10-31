@@ -6,14 +6,14 @@ module CSA(
 	output [15:0] z,
 	output cout
 );
-	wire [7:0] s1, c1;
-	wire [8:0] s2, c2;
-	wire [9:0] s3, c3;
-	wire [10:0] s4, c4;
-	wire [11:0] s5, c5;
-	wire [12:0] s6, c6;
-	wire [13:0] s7, c7;
-	wire [14:0] s8, c8;
+	wire [8:0] s1, c1;
+	wire [9:0] s2, c2;
+	wire [10:0] s3, c3;
+	wire [11:0] s4, c4;
+	wire [12:0] s5, c5;
+	wire [13:0] s6, c6;
+	wire [14:0] s7, c7;
+	wire [15:0] s8, c8;
 
 	//first CSA (8-bit)
 	N_bit #8 N1(a, b, c, s1, c1);
@@ -61,6 +61,8 @@ module Test_CSA();
 	A = 8'h03;	B = 8'h04;	C = 8'h05;	D = 8'h06;
 	E = 8'h07;	F = 8'h08;	G = 8'h09;	H = 8'h0A;
 	I = 8'h00;	J = 8'h00;
+	
+	#20 $finish();
 	end
 
 	CSA c1(A, B, C, D, E, F, G, H, I, J, 1'b0, P, Co);

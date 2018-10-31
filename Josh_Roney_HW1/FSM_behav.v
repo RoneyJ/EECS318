@@ -1,30 +1,59 @@
-module FSM_behav(out, E, W, clk); //Case statement needed
-	input E, W, clk;
+module FSM_behav(out, reset, E, W, clk); //Case statement needed
+	input E, W, clk, reset;
 	output out;
-	reg Q1, Q2, Q1B, Q2B, z;
+	reg Q1, Q2, z;
 
-	initial
+	reg [1:0] State;
+	localparam [1:0]
+		S0 = 2'b00,
+		S1 = 2'b01,
+		S2 = 2'b11,
+		S3 = 2'b10;
+	
+
+	always@(posedge clk, posedge reset)
 	begin
-		Q1 = 0;
-		Q2 = 0;
+		if(reset)
+		begin
+			out <= 0;
+			
+			State <= S0;
+		end
+		
+		else
+		begin
+			case(State)
+				S0:
+				begin
+					if(~E && W)
+						State <= S1;
+					else if (E && W)
+						State <= S2;
+					else if (E && ~W)
+						State <= S3;
+				end
+				S1:
+				begin
+					if(E)
+						State <= S2;
+				end
+				S2:
+				begin
+					if(~E && ~W)
+						State <= S0;
+				end
+				S3:
+				begin
+					if(~W)
+						State <= S2;
+				end
+			endcase
+		end
 	end
 
-	always@(posedge clk)
-	begin
-		Q1 = E | (Q1&Q2B) | (Q1&W);
-		Q2 = W | (Q2&Q1B) | (Q2&W);
-	end
 
-	//e=0, q1=0 | q2b=0, q1=0 | w=0
-
-	always@*
-	begin
-		Q1B <= !(Q1);
-		Q2B <= !(Q2);
-		z <= (Q1B & Q2B);
-	end
-
-	assign out = z;
+	assign out = ~State(0) & ~State(1);
+	
 endmodule
 
 module FSM_behav_test;
@@ -39,22 +68,22 @@ module FSM_behav_test;
 		E = 0;
 		W= 0;
 
-		#20 E = 1;
-		#5 Clk = 1;
-		#5 Clk = 0;
+		#2 W = 1; //go from State 0 to State 1
 
-		#20 W = 1;
-		#5 Clk = 1;
-		#5 Clk = 0;
+		#10 E = 1; //go from State 1 to State 2
 
-		#20 E = 0;
-		#5 Clk = 1;
-		#5 Clk = 0;
+		#10 E = 0; //go from State 2 to State 0
+			 W = 0;
 
-		#20 W = 0;
-		#5 Clk = 1;
-		#5 Clk = 0;
+		#10 E = 1; //go from State 0 to State 3
+		
+		#10 W = 0; //go from State 3 to State 2
+		
+		#10 E = 0; //go from State 2 to State 0
 
-		#100 $finish();
+		#20 $finish();
 	end
+	
+	always
+		#5 Clk = ~Clk;
 endmodule
