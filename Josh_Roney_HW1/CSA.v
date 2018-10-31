@@ -16,28 +16,28 @@ module CSA(
 	wire [15:0] s8, c8;
 
 	//first CSA (8-bit)
-	N_bit #8 N1(a, b, c, s1, c1);
+	N_bit #(8) N1(a, b, c, s1, c1);
 
 	//second CSA (9-bit)
-	N_bit #9 N2(c1, s1, d, s2, c2);
+	N_bit #(9) N2(c1, s1, {1'b0,d}, s2, c2);
 
 	//third CSA (10-bit)
-	N_bit #10 N3(c2, s2, e, s3, c3);
+	N_bit #(10) N3(c2, s2, {2'b00,e}, s3, c3);
 
 	//fourth CSA (11-bit)
- 	N_bit #11 N4(c3, s3, f, s4, c4);
+ 	N_bit #(11) N4(c3, s3, {3'b000,f}, s4, c4);
 
 	//fifth CSA (12-bit)
-	N_bit #12 N5(c4, s4, g, s5, c5);
+	N_bit #(12) N5(c4, s4, {4'b0000,g}, s5, c5);
 
 	//sixth CSA (13-bit)
-	N_bit #13 N6(c5, s5, h, s6, c6);
+	N_bit #(13) N6(c5, s5, {5'b00000,h}, s6, c6);
 
 	//seventh CSA (14-bit)
-	N_bit #14 N7(c6, s6, i, s7, c7);
+	N_bit #(14) N7(c6, s6, {6'b000000,i}, s7, c7);
 
 	//eigth CSA (15-bit)
-	N_bit #15 N8(c7, s7, j, s8, c8);
+	N_bit #(15) N8(c7, s7, {7'b0000000,j}, s8, c8);
 
 	//final adder
 	N_bit_adder #16 n(s8, c8, cin, z, cout);
@@ -57,7 +57,7 @@ module Test_CSA();
 	I = 8'h09;	J = 8'h0A;
 
 	//3, 4, 5, 6, 7, 8, 9, 10
-	#20
+	#50
 	A = 8'h03;	B = 8'h04;	C = 8'h05;	D = 8'h06;
 	E = 8'h07;	F = 8'h08;	G = 8'h09;	H = 8'h0A;
 	I = 8'h00;	J = 8'h00;
@@ -71,7 +71,7 @@ endmodule
 //n-bit CSA module
 module N_bit(A, B, C, sum, cout);
 	parameter N = 18;
-	input[N-1:0] A,B,C;
+	input [N-1:0] A,B,C;
 	output[N:0] sum, cout;
 	
 	genvar i;

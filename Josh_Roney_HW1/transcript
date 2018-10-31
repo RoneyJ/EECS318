@@ -8,10 +8,14 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim Test_shift_add 
-# Loading work.Test_shift_add
-# Loading work.Shift_add_mult
-# Loading work.NA
-# Loading work.N_bit_adder
-add wave sim/:Test_shift_add:*
+# vsim Test_signed 
+# Loading work.Test_signed
+# Loading work.signed_mult
 run
+# 1
+# Break in Module Test_signed at signed_mul.v line 58
+restart
+add wave sim/:Test_signed:*
+run
+# 1
+# Break in Module Test_signed at signed_mul.v line 58

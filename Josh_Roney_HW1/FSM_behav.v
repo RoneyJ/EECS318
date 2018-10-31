@@ -15,7 +15,7 @@ module FSM_behav(out, reset, E, W, clk); //Case statement needed
 	begin
 		if(reset)
 		begin
-			out <= 0;
+			z <= 0;
 			
 			State <= S0;
 		end
@@ -25,6 +25,8 @@ module FSM_behav(out, reset, E, W, clk); //Case statement needed
 			case(State)
 				S0:
 				begin
+					z = 1;
+
 					if(~E && W)
 						State <= S1;
 					else if (E && W)
@@ -34,16 +36,19 @@ module FSM_behav(out, reset, E, W, clk); //Case statement needed
 				end
 				S1:
 				begin
+					z = 0;
 					if(E)
 						State <= S2;
 				end
 				S2:
 				begin
+					z = 0;
 					if(~E && ~W)
 						State <= S0;
 				end
 				S3:
 				begin
+					z = 0;
 					if(~W)
 						State <= S2;
 				end
@@ -51,22 +56,24 @@ module FSM_behav(out, reset, E, W, clk); //Case statement needed
 		end
 	end
 
-
-	assign out = ~State(0) & ~State(1);
+	assign out = z;
 	
 endmodule
 
 module FSM_behav_test;
-	reg E, W, Clk;
+	reg E, W, Clk, reset;
 
-	FSM_behav F1(Out, E, W, Clk);
+	FSM_behav F1(Out, reset, E, W, Clk);
 
 
 	initial
 	begin
+		reset= 1;
 		Clk = 0;
 		E = 0;
 		W= 0;
+		
+		#6 reset = 0;
 
 		#2 W = 1; //go from State 0 to State 1
 
