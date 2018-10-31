@@ -12,6 +12,7 @@ module Shift_add_mult(clk, A, B, R, start, done);
 	reg fin;
 	wire [M-1:0] w1, w2;
 	wire w3;
+	wire [M*2-1:0] w4;
 	integer i;
 
 	initial
@@ -19,6 +20,8 @@ module Shift_add_mult(clk, A, B, R, start, done);
 		c = 1'b0;
 		P = 0;
 		X = 0;
+		fin = 0;
+		i = 0;
 	end
 
 	always @(posedge clk)
@@ -32,21 +35,27 @@ module Shift_add_mult(clk, A, B, R, start, done);
 		end
 	end
 
-	NA #M n(A, X[0], w1); // AND every bit of A with the LSB of X
-	N_bit_adder #M ad(w1[M-1:0], P[M-1:0], c, w2[M-1:0], w3); // Add result to P
+	NA #(M) n(clk, A, X[0], w1); // AND every bit of A with the LSB of X
+	N_bit_adder #(M) ad(clk, w1[M-1:0], P[M-1:0], c, w2[M-1:0], w3); // Add result to P
+	N_shift #(M*2) sh1(clk, {w2,X}, w3, w4); // Shift P and X registers
 
+	genvar j;
 	always @(negedge clk)
 	begin
-		if(!fin)
-		begin
-		X = {w2[0], X[M-1:1]}; // shift X register
-		P = {w3, w2[M-1:1]}; // shift P register
-		i = i + 1;
-		end
+	if(!fin)
+	begin
+		X = w4[M-1:0];
+		P = w4[M*2-1:M];
 
-		if(i == M)
-		fin = 1;
+		i = i + 1;
 	end
+
+	if(i == M)
+	fin = 1;
+		
+	end
+
+	
 
 	assign R = {P[M-1:0],  X[M-1:0]}; // assign output as P register
 	assign done = fin;
@@ -54,7 +63,7 @@ endmodule
 
 //Test bench module
 module Test_shift_add;
-	reg [3:0] A, B, C, D;
+	reg [3:0] A, B;
 	reg clk,start; 
 	wire [7:0] P1;
 	wire done;
@@ -82,29 +91,36 @@ module Test_shift_add;
 endmodule
 
 //n-bit adder module
-module N_bit_adder(a, b, cin, z, cout);
+module N_bit_adder(enable, a, b, cin, out, cout);
 	parameter N=16;
 	input [N-1:0] a,b;
-	input cin;
-   	output [N-1:0] z;
+	input enable, cin;
+   	output [N-1:0] out;
    	output  cout;
-  	wire [N-1:0] carry;
+	reg [N-1:0] z, carry;
 
   	genvar i;
    	generate for(i=0;i<N;i=i+1)
         begin
-   	   	if(i==0)
+	always @*
+	begin
+		if(enable)
 		begin
-			assign z[i] = a[i]^b[i]^cin;
-			assign carry[i] = (a[i]&b[i])|(a[i]&cin)|(b[i]&cin);
-		end
-  	   	else
-		begin
-			assign z[i] = a[i]^b[i]^carry[i-1];
-			assign carry[i] = (a[i]&b[i])|(a[i]&carry[i-1])|(b[i]&carry[i-1]);
-		end
-     	end
+   	   		if(i==0)
+			begin
+				z[i] = a[i]^b[i]^cin;
+				carry[i] = (a[i]&b[i])|(a[i]&cin)|(b[i]&cin);
+			end
+  	   		else
+			begin
+				z[i] = a[i]^b[i]^carry[i-1];
+				carry[i] = (a[i]&b[i])|(a[i]&carry[i-1])|(b[i]&carry[i-1]);
+			end
+     		end
+	end
+	end
 
+	assign out = z;
   	assign cout = carry[N-1];
    	endgenerate
 endmodule 
@@ -112,10 +128,10 @@ endmodule
 // n-bit and module
 // Ands every bit of an n-bit input with a one-bit input
 // Assigns the outcome to the output
-module NA(a, b, out);
+module NA(enable, a, b, out);
 	parameter M = 8;
 	input [M-1:0] a;
-	input b;
+	input enable, b;
 	output [M-1:0] out;
 	reg [M-1:0] z;
 
@@ -124,10 +140,40 @@ module NA(a, b, out);
 	begin
 	always @*
 	begin
+		if(enable)
 		z[i] <= a[i] & b;
 	end
 	end
 	endgenerate
 
 	assign out = z;
+endmodule
+
+//n-bit shift register
+//shifts an n-bit register left by one bit
+module N_shift(enable, d, carry, q);
+	parameter M = 4;
+	input [M-1:0] d;
+	input enable, carry;
+	output [M-1:0] q;
+	reg [M-1:0] z;
+
+	genvar i;
+	generate for(i=0;i<M;i=i+1)
+	begin
+	always @*
+	begin
+		if(enable)
+		begin
+			if(i==M-1)
+			z[i] = carry;
+		
+			else
+			z[i] = d[i+1];
+		end
+	end
+	end
+	endgenerate
+
+	assign q = z;
 endmodule

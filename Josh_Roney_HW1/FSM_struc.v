@@ -21,64 +21,38 @@ module FSM_struc (out, E, W, clk);
 endmodule
 
 //Test bench module for FSM_struc
-module FSM_Struc_Test;
+module FSM_struc_test;
 	reg E, W, Clk;
-	FSM_struc T1 (Out, E, W, Clk);
+
+	FSM_struc F1(Out, E, W, Clk);
+
 
 	initial
 	begin
-		Clk=0;
-		E=0;
-		W=0;
+		Clk = 0;
+		E = 0;
+		W= 0;
 
-		#20 E=1;
-		#5 Clk = 1;
-		#5 Clk = 0;
+		#2 W = 1; //go from State 0 to State 1
 
-		#20 W=1;
-		#5 Clk = 1;
-		#5 Clk = 0;
+		#10 E = 1; //go from State 1 to State 2
 
-		#20 E=0;
-		#5 Clk = 1;
-		#5 Clk = 0;
+		#10 E = 0; //go from State 2 to State 0
+			 W = 0;
 
+		#10 E = 1; //go from State 0 to State 3
+		
+		#10 W = 0; //go from State 3 to State 2
+		
+		#10 E = 0; //go from State 2 to State 0
 
-		#100 $finish;
+		#20 $finish();
 	end
-endmodule
-
-//NOT module
-module NOT(out, in);
-	input in;
-	output out;
 	
-	assign out = ~in;
+	always
+		#5 Clk = ~Clk;
 endmodule
 
-//AND module
-module AND(out, in1, in2);
-	input in1, in2;
-	output out;
-
-	assign out = in1 & in2;
-endmodule
-
-//3-input OR module
-module OR(out, in1, in2, in3);
-	input in1, in2, in3;
-	output out;
-
-	assign out = in1 | in2 | in3;
-endmodule
-
-//NOR module
-module NOR(out, in1, in2);
-	input in1, in2;
-	output out;
-
-	assign out = ~(in1 | in2);
-endmodule
 	
 
 //D Flip Flop module

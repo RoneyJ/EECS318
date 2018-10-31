@@ -3,9 +3,9 @@
 module signed_mult(
 	input [4:0] Mcand,
 	input [4:0] Mplier,
-	output [8:0] out
+	output [9:0] out
 );
-	reg [8:0] result;
+	reg [9:0] result;
 	reg [7:0] product, compProduct;
 	reg [3:0] a,b;
 	reg sign;
@@ -22,15 +22,15 @@ module signed_mult(
 		else
 			b <= {Mplier[3:0]};
 
-		assign sign = Mcand[4] ^ Mplier[4];
+		sign = Mcand[4] ^ Mplier[4];
 
-		assign product = a * b;
-		assign compProduct = ~product + 1'b1;
+		product = a * b;
+		compProduct = ~product + 1'b1;
 
 		if(sign)
-			result <= {1'b1, compProduct};
+			result <= {2'b11, compProduct};
 		else
-			result <= {1'b0, product};
+			result <= {2'b00, product};
 	end
 
 	assign out = result;
@@ -40,7 +40,7 @@ endmodule
 //Test bench module for signed multiplier
 module Test_signed();
 	reg [4:0] A,B;
-	wire [8:0] P;
+	wire [9:0] P;
 
 	initial
 	begin
