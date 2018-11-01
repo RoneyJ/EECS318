@@ -3,7 +3,7 @@
 module signed_mult(
 	input [4:0] Mcand,
 	input [4:0] Mplier,
-	input start;
+	input start,
 	output [9:0] out
 );
 	reg [8:0] result;
@@ -66,7 +66,7 @@ endmodule
 module Test_signed();
 	reg [4:0] A,B;
 	reg start;
-	wire [9:0] P;
+	reg [9:0] P;
 
 	initial
 	begin
@@ -75,13 +75,15 @@ module Test_signed();
 	A = 5'b10110;	B = 5'b00100;
 	
 	#5 start = 0;
+	$display("%b", P);
 
 	#5
 	// 11 * -3
 	A = 5'b01011;	B = 5'b11101;
 	start = 1;
 	
-	#5 start = 0;' 
+	#5 start = 0;
+	$display("%b", P);
 
 	#5
 	// -10 * -11
@@ -89,7 +91,8 @@ module Test_signed();
 	start = 1;
 	
 	#5 start = 0;
-	
+	$display("%b", P);
+
 	#10 $finish();
 	end
 	
@@ -97,7 +100,7 @@ module Test_signed();
 endmodule
 
 // 2-input, 9-bit adder		
-module Add_9(in1, in2, out)
+module Add_9(in1, in2, out);
 	input [8:0] in1, in2;
 	output [8:0] out;
 	reg [8:0] z; 
@@ -112,8 +115,11 @@ module Add_9(in1, in2, out)
 	genvar i;
 	generate for(i=0;i<9;i=i+1)
 	begin
-		z[i] = in1[i] ^ in2[i] ^ carry[i];
-		carry[i+1] = (in1[i]&in2[i]) | (in1[i]&carry[i]) | (in2[i]&carry[i]);
+	always @*
+	begin
+		z[i] <= in1[i]^in2[i]^carry[i];
+		carry[i+1] <= (in1[i]&in2[i]) | (in1[i]&carry[i]) | (in2[i]&carry[i]);
+	end
 	end
 	endgenerate
 	
