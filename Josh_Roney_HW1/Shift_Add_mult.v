@@ -10,10 +10,10 @@ module Shift_add_mult(clk, A, B, R, start, done);
 	reg [M-1:0] X, P;
 	reg c; // carry out flip-flop
 	reg fin;
-	wire [M-1:0] w1, w2;
+	wire [M-1:0] w1, w2, w5;
 	wire w3;
 	wire [M*2-1:0] w4;
-	integer i;
+	reg [M-1:0] i;
 
 	initial
 	begin
@@ -21,7 +21,7 @@ module Shift_add_mult(clk, A, B, R, start, done);
 		P = 0;
 		X = 0;
 		fin = 0;
-		i = 0;
+		i = 1'b1;
 	end
 
 	always @(posedge start)//clk)
@@ -30,7 +30,7 @@ module Shift_add_mult(clk, A, B, R, start, done);
 		//begin
 		X = B;
 		P = 0;
-		i = 0; 
+		i = 1'b1; 
 		fin = 0;
 		//end
 	end
@@ -38,6 +38,7 @@ module Shift_add_mult(clk, A, B, R, start, done);
 	NA #(M) n(clk, A, X[0], w1); // AND every bit of A with the LSB of X
 	N_bit_adder #(M) ad(clk, w1[M-1:0], P[M-1:0], c, w2[M-1:0], w3); // Add result to P
 	N_shift #(M*2) sh1(clk, {w2,X}, w3, w4); // Shift P and X registers
+	N_shift_R #(M) sh2(clk, i, 0'b0, w5)
 
 	always @(negedge clk)
 	begin
@@ -46,11 +47,10 @@ module Shift_add_mult(clk, A, B, R, start, done);
 		X = w4[M-1:0];
 		P = w4[M*2-1:M];
 
-		i = i + 1;
+		i = w5;
 	end
 
-	if(i == M)
-	fin = 1;
+	fin = i[M-1];
 		
 	end
 
@@ -169,6 +169,35 @@ module N_shift(enable, d, carry, q);
 		
 			else
 			z[i] = d[i+1];
+		end
+	end
+	end
+	endgenerate
+
+	assign q = z;
+endmodule
+
+//n-bit shift register
+//shifts an n-bit register right by one bit
+module N_shift_R(enable, d, carry, q);
+	parameter M = 4;
+	input [M-1:0] d;
+	input enable, carry;
+	output [M-1:0] q;
+	reg [M-1:0] z;
+
+	genvar i;
+	generate for(i=M;i>0;i=i-1)
+	begin
+	always @*
+	begin
+		if(enable)
+		begin
+			if(i==0)
+			z[i] = carry;
+		
+			else
+			z[i] = d[i-1];
 		end
 	end
 	end
