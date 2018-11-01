@@ -24,22 +24,21 @@ module Shift_add_mult(clk, A, B, R, start, done);
 		i = 0;
 	end
 
-	always @(posedge clk)
+	always @(posedge start)//clk)
 	begin
-		if(start)
-		begin
+		//if(start)
+		//begin
 		X = B;
 		P = 0;
 		i = 0; 
 		fin = 0;
-		end
+		//end
 	end
 
 	NA #(M) n(clk, A, X[0], w1); // AND every bit of A with the LSB of X
 	N_bit_adder #(M) ad(clk, w1[M-1:0], P[M-1:0], c, w2[M-1:0], w3); // Add result to P
 	N_shift #(M*2) sh1(clk, {w2,X}, w3, w4); // Shift P and X registers
 
-	genvar j;
 	always @(negedge clk)
 	begin
 	if(!fin)
@@ -106,7 +105,7 @@ module N_bit_adder(enable, a, b, cin, out, cout);
 	begin
 		if(enable)
 		begin
-   	   		if(i==0)
+   	   if(i==0)
 			begin
 				z[i] = a[i]^b[i]^cin;
 				carry[i] = (a[i]&b[i])|(a[i]&cin)|(b[i]&cin);
