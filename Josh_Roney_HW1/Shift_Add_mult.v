@@ -10,10 +10,11 @@ module Shift_add_mult(clk, A, B, R, start, done);
 	reg [M-1:0] X, P;
 	reg c; // carry out flip-flop
 	reg fin;
-	wire [M-1:0] w1, w2, w5;
+	wire [M-1:0] w1, w2; 
+	wire [M:0] w5;
 	wire w3;
 	wire [M*2-1:0] w4;
-	reg [M-1:0] i;
+	reg [M:0] i;
 
 	initial
 	begin
@@ -24,21 +25,18 @@ module Shift_add_mult(clk, A, B, R, start, done);
 		i = 1'b1;
 	end
 
-	always @(posedge start)//clk)
+	always @(posedge start)
 	begin
-		//if(start)
-		//begin
 		X = B;
 		P = 0;
 		i = 1'b1; 
 		fin = 0;
-		//end
 	end
 
 	NA #(M) n(clk, A, X[0], w1); // AND every bit of A with the LSB of X
 	N_bit_adder #(M) ad(clk, w1[M-1:0], P[M-1:0], c, w2[M-1:0], w3); // Add result to P
 	N_shift #(M*2) sh1(clk, {w2,X}, w3, w4); // Shift P and X registers
-	N_shift_R #(M) sh2(clk, i, 0'b0, w5)
+	N_shift_R #(M+1) sh2(clk, i, 1'b0, w5);
 
 	always @(negedge clk)
 	begin
@@ -50,7 +48,7 @@ module Shift_add_mult(clk, A, B, R, start, done);
 		i = w5;
 	end
 
-	fin = i[M-1];
+	fin = i[M];
 		
 	end
 
@@ -64,20 +62,23 @@ endmodule
 module Test_shift_add;
 	reg [3:0] A, B;
 	reg clk,start; 
-	wire [7:0] P1;
+	wire [7:0] P;
 	wire done;
 
 	initial
 	begin
-	clk = 1'b0;	start = 1;
+	clk = 1'b0;
 	A = 4'b0010;    B = 4'b0100;
+	#1 start = 1;
 	#6 start = 0;
 
-	#38 start = 1;
+	#36 $display("%b", P); 
+	    start = 1;
 	A = 4'b1111;    B = 4'b0011;
 	#3 start = 0;
 	
-	#40 $finish();
+	#36 $display("%b", P);
+	#4 $finish();
 	end
 
 	always
@@ -85,7 +86,7 @@ module Test_shift_add;
 		#5 clk = !clk;
 	end
 
-	Shift_add_mult #4 m1(clk, A, B, P1, start, done);
+	Shift_add_mult #4 m1(clk, A, B, P, start, done);
 
 endmodule
 
@@ -105,7 +106,7 @@ module N_bit_adder(enable, a, b, cin, out, cout);
 	begin
 		if(enable)
 		begin
-   	   if(i==0)
+   	   		if(i==0)
 			begin
 				z[i] = a[i]^b[i]^cin;
 				carry[i] = (a[i]&b[i])|(a[i]&cin)|(b[i]&cin);
@@ -187,7 +188,7 @@ module N_shift_R(enable, d, carry, q);
 	reg [M-1:0] z;
 
 	genvar i;
-	generate for(i=M;i>0;i=i-1)
+	generate for(i=M-1;i>=0;i=i-1)
 	begin
 	always @*
 	begin

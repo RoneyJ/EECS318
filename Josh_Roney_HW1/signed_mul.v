@@ -6,16 +6,15 @@ module signed_mult(
 	input start,
 	output [9:0] out
 );
-	reg [8:0] result;
+	wire [8:0] result;
 	reg [4:0] a, b;
 	reg [3:0] c;
 	reg [8:0] p1, p2, p3, p4, p5;
 	reg sign;
-	wire [8:0] w1;
+	wire [8:0] w1, w2, w3;
 	
 	initial
 	begin
-		result = 0;
 		a = 0;
 		b = 0;
 		p1 = 0;
@@ -66,7 +65,7 @@ endmodule
 module Test_signed();
 	reg [4:0] A,B;
 	reg start;
-	reg [9:0] P;
+	wire [9:0] P;
 
 	initial
 	begin

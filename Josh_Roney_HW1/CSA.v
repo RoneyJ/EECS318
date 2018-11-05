@@ -57,12 +57,14 @@ module Test_CSA();
 	I = 8'h09;	J = 8'h0A;
 
 	//3, 4, 5, 6, 7, 8, 9, 10
-	#20
+	#18 $display("%b" , P);
+	#2
 	A = 8'h03;	B = 8'h04;	C = 8'h05;	D = 8'h06;
 	E = 8'h07;	F = 8'h08;	G = 8'h09;	H = 8'h0A;
 	I = 8'h00;	J = 8'h00;
 	
-	#20 $finish();
+	#20 $display("%b" , P);
+	#2 $finish();
 	end
 
 	CSA c1(A, B, C, D, E, F, G, H, I, J, 1'b0, P, Co);
