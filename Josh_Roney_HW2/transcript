@@ -1,0 +1,24 @@
+# //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-36-generic
+# //
+# //  Copyright 1991-2010 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim Test_adder 
+# Loading work.Test_adder
+# Loading work.adder
+add wave sim/:Test_adder:*
+run
+# 0000000000000001 0 0
+# 0000111100000001 0 0
+# 1000000000000000 1 0
+# 1111111100000001 0 0
+# 1000000100000001 0 0
+# ** Note: $finish    : adder.v(348)
+#    Time: 70 fs  Iteration: 0  Instance: :Test_adder
+# 1
+# Break in Module Test_adder at adder.v line 348
