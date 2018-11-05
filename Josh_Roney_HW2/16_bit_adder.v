@@ -1,9 +1,9 @@
-module 16_bit_adder(
-	input [15:0] A,B;
-	input [2:0] CODE;
-	input cin, coe;//carry input and carry output enable
-	output [15:0] C;
-	output vout, cout; //signed overflow and carry output
+module adder(
+	input [15:0] A,B,
+	input [2:0] CODE,
+	input cin, coe,//carry input and carry output enable
+	output [15:0] C,
+	output vout, cout //signed overflow and carry output
 );
 reg [15:0]a,b,c;
 reg i,oe,vo,co;
