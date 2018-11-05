@@ -4,13 +4,21 @@ module ALU(
 	output [15:0] C;
 	output overflow;
 );
-reg [15:0] c;
-reg of;
+reg [15:0] a, b, c;
+reg [3:0] code;
+reg of, cin, coe;
+
+adder b (a, b, code, cin, coe, c, vout, cout);
 
 case(alu_code)
 	//Arithmetic operations
 	5'b00000://signed addition
 	begin
+		code = 3'b000;
+		a = A;
+		b = B;
+		cin = 0;
+		coe = 0;
 	end
 	5'b00001://unsigned addition
 	begin
