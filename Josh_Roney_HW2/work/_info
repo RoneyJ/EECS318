@@ -4,18 +4,19 @@ K3
 cModel Technology
 Z0 d/home/jpr87/EECS318/Josh_Roney_HW2
 vadder
-!s100 @Dm07:?mI:E1@7QNlUIf>0
-I@4EBO8i2QbAVRQdafRFFc0
+!s100 IP5>V0L]9Szec2SeY5V<I2
+IW`FJO9MIIag=>kX=C=amJ0
 VBG2[0KDF_Je1j>GGdJ24W1
-Z1 w1541461623
-Z2 8adder.v
-Z3 Fadder.v
+Z1 w1541518308
+Z2 Fadder.v
+Z3 8ALU.v
+Z4 FALU.v
 L0 1
-Z4 OL;L;6.5f;42
+Z5 OL;L;6.5f;42
 r1
 !s85 0
 31
-Z5 o-L mtiAvm -L mtiOvm -L mtiUPF
+Z6 o-L mtiAvm -L mtiOvm -L mtiUPF
 vmux
 I35OcaJ73m]i`FX3e^6VcW3
 V[oS`Nhbm8A9IZj7D_l3Go2
@@ -23,23 +24,24 @@ w1541455945
 8mux_ex.v
 Fmux_ex.v
 L0 1
-R4
+R5
 r1
 31
-R5
+R6
 !s100 ?A5SZFGSh;Nni35XB6Lga0
 !s85 0
 vTest_adder
-!s100 ]1eU5oGR25B1E[<2JDMT]1
-IlRXD9SW9zSe0m2A<l>h;d3
+!s100 oQ42Gb2AKUmRK<=OD]ZZ[2
+IhPm@9S:lB_>;8FXn[c1Ff0
 V2:CS:6Wc]RFW?`Xj`4T7L0
 R1
 R2
 R3
-L0 307
 R4
+L0 313
+R5
 r1
 !s85 0
 31
-R5
+R6
 n@test_adder
