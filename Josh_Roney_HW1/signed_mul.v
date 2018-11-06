@@ -26,16 +26,20 @@ module signed_mult(
 	
 	always @(posedge start)
 	begin
-		if(Mplier[4])
-		begin
-			a = ~Mcand + 1'b1;
-			b = ~Mplier + 1'b1;
-		end
-		else
-		begin
-			a = Mcand;
-			b = Mplier;
-		end
+		a[0] = (Mcand[0] & ~Mplier[4]) | (~Mcand[0] & Mplier[4]);
+		a[1] = (Mcand[1] & ~Mplier[4]) | (~Mcand[1] & Mplier[4]);
+		a[2] = (Mcand[2] & ~Mplier[4]) | (~Mcand[2] & Mplier[4]);
+		a[3] = (Mcand[3] & ~Mplier[4]) | (~Mcand[3] & Mplier[4]);
+		a[4] = (Mcand[4] & ~Mplier[4]) | (~Mcand[4] & Mplier[4]);
+			
+		b[0] = (Mplier[0] & ~Mplier[4]) | (~Mplier[0] & Mplier[4]);
+		b[1] = (Mplier[1] & ~Mplier[4]) | (~Mplier[1] & Mplier[4]);
+		b[2] = (Mplier[2] & ~Mplier[4]) | (~Mplier[2] & Mplier[4]);
+		b[3] = (Mplier[3] & ~Mplier[4]) | (~Mplier[3] & Mplier[4]);
+		b[4] = (Mplier[4] & ~Mplier[4]) | (~Mplier[4] & Mplier[4]);
+
+		a = a + (1'b1 & Mplier[4]);
+		b = b + (1'b1 & Mplier[4]);
 	end
 	
 	Add_9 a1(p1, p2, w1);

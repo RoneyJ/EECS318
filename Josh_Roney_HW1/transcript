@@ -14,7 +14,6 @@
 # Loading work.N_bit
 # Loading work.N_bit_adder
 # Loading work.FA
-add wave sim/:Test_CSA:c1:*
 add wave sim/:Test_CSA:*
 run
 # xxxxxxxx00110111
