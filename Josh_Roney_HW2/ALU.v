@@ -4,12 +4,15 @@ module ALU(
 	output [15:0] C;
 	output overflow;
 );
-reg [15:0] a, b, c;
+reg [15:0] a, b;
+wire [15:0] c;
+wire of;
 reg [3:0] code;
-reg of, cin, coe;
+reg cout,cin,coe;
 
-adder b (a, b, code, cin, coe, c, vout, cout);
+adder b (a, b, code, cin, coe, c, of, cout);
 
+always @(A or B or alu_code)
 case(alu_code)
 	//Arithmetic operations
 	5'b00000://signed addition
@@ -19,22 +22,67 @@ case(alu_code)
 		b = B;
 		cin = 0;
 		coe = 0;
+		
+		C = c;
+		overflow = of;
+		
 	end
 	5'b00001://unsigned addition
 	begin
+		code = 3'b001;
+		a = A;
+		b = B;
+		cin = 0;
+		coe = 0;
+		
+		C = c;
+		overflow = of;
 	end
 	5'b00010://signed subtraction
 	begin
+		code = 3'b010;
+		a = A;
+		b = B;
+		cin = 0;
+		coe = 0;
+		
+		C = c;
+		overflow = of;
 	end
 	5'b00011://unsigned subtraction
 	begin
+		code = 3'b011;
+		a = A;
+		b = B;
+		cin = 0;
+		coe = 0;
+		
+		C = c;
+		overflow = of;
 	end
 	5'b00100://signed increment
 	begin
+		code = 3'b100;
+		a = A;
+		b = B;
+		cin = 0;
+		coe = 0;
+		
+		C = c;
+		overflow = of;
 	end
 	5'b00101://signed decrement
 	begin
+		code = 3'b101;
+		a = A;
+		b = B;
+		cin = 0;
+		coe = 0;
+		
+		C = c;
+		overflow = of;
 	end
+	
 	//Logic Operations
 	5'b01000://A AND B
 	begin
