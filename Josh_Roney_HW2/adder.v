@@ -321,21 +321,21 @@ adder a(A, B, CODE, cin, coe, C, vout, cout);
 
 initial
 begin
-CODE = 3'b100;
-cin = 1;	coe = 0;
+CODE = 3'b000;
+cin = 0;	coe = 0;
 A = 16'h0000;	B = 16'h0001;
 
 #5 $display("%b %b %b", C, vout, cout);
 
 #10
 cin = 1;	coe = 0;
-A = 16'h0F00;	B = 16'h0F00;
+A = 16'h000F;	B = 16'h000F;
 
 #5 $display("%b %b %b", C, vout, cout);
 
 #10
-cin = 1;	coe = 0;
-A = 16'h7FFF;	B = 16'h0300;
+cin = 0;	coe = 0;
+A = 16'h7F00;	B = 16'h0300;
 
 #5 $display("%b %b %b", C, vout, cout);
 

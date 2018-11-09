@@ -8,17 +8,16 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim Test_adder 
-# Loading work.Test_adder
+# vsim Test_ALU 
+# Loading work.Test_ALU
+# Loading work.ALU
 # Loading work.adder
-add wave sim/:Test_adder:*
+add wave sim/:Test_ALU:alu:*
 run
-# 0000000000000001 0 0
-# 0000111100000001 0 0
-# 1000000000000000 1 0
-# 1111111100000001 0 0
-# 1000000100000001 0 0
-# ** Note: $finish    : adder.v(348)
-#    Time: 70 fs  Iteration: 0  Instance: :Test_adder
+# signed addition
+# unsigned addition
+run
+# ** Note: $finish    : ALU.v(321)
+#    Time: 110 fs  Iteration: 0  Instance: :Test_ALU
 # 1
-# Break in Module Test_adder at adder.v line 348
+# Break in Module Test_ALU at ALU.v line 321

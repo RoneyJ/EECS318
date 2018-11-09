@@ -4,19 +4,47 @@ K3
 cModel Technology
 Z0 d/home/jpr87/EECS318/Josh_Roney_HW2
 vadder
-!s100 IP5>V0L]9Szec2SeY5V<I2
 IW`FJO9MIIag=>kX=C=amJ0
 VBG2[0KDF_Je1j>GGdJ24W1
-Z1 w1541518308
+Z1 w1541779646
 Z2 Fadder.v
 Z3 8ALU.v
 Z4 FALU.v
 L0 1
 Z5 OL;L;6.5f;42
 r1
-!s85 0
 31
 Z6 o-L mtiAvm -L mtiOvm -L mtiUPF
+!s100 IP5>V0L]9Szec2SeY5V<I2
+!s85 0
+vALU
+IJBFLzNg1]i0_lUBEJgcBn3
+V]Hzo7^WokW6`_P7TE2<5=2
+R1
+R3
+R4
+L0 3
+R5
+r1
+31
+R6
+n@a@l@u
+!s100 O<5a0>C2cCzOTAE@Gk9=g1
+!s85 0
+vfreecellPlayer
+!s100 Wm;LOQO@AQnVo<49g<_E?2
+Io]lg<THEN2@:RXkiQHCMj0
+V>LWC813IUVAO[DgEIEchX2
+w1541781123
+8freecell.v
+Ffreecell.v
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+nfreecell@player
 vmux
 I35OcaJ73m]i`FX3e^6VcW3
 V[oS`Nhbm8A9IZj7D_l3Go2
@@ -31,8 +59,7 @@ R6
 !s100 ?A5SZFGSh;Nni35XB6Lga0
 !s85 0
 vTest_adder
-!s100 oQ42Gb2AKUmRK<=OD]ZZ[2
-IhPm@9S:lB_>;8FXn[c1Ff0
+I7mbaa=Ii72BM1a0]>^Sdd2
 V2:CS:6Wc]RFW?`Xj`4T7L0
 R1
 R2
@@ -41,7 +68,22 @@ R4
 L0 313
 R5
 r1
-!s85 0
 31
 R6
 n@test_adder
+!s100 i:k4Z=lYOjc9;>h:U;0FJ1
+!s85 0
+vTest_ALU
+IzGi0zP4@mJR77[h048V4<1
+VoOPR?jlf:aIz>B5]FD[`<0
+R1
+R3
+R4
+L0 260
+R5
+r1
+31
+R6
+n@test_@a@l@u
+!s100 oZ5EgW;V`]oZ^2D09WAZ^2
+!s85 0
