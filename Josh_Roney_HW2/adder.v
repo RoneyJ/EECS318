@@ -314,7 +314,7 @@ assign vout = vo;
 endmodule
 
 module Test_adder;
-reg [15:0] A, B;
+reg signed [15:0] A, B;
 reg [2:0] CODE;
 reg cin, coe;
 wire vout, cout;
@@ -328,31 +328,31 @@ CODE = 3'b000;
 cin = 0;	coe = 0;
 A = 16'h0000;	B = 16'h0001;
 
-#5 $display("%b %b %b", C, vout, cout);
+#1 $display("A=%d B=%d Ci=%d = Sum %d %d %d", A, B, cin, C, vout, cout);
 
 #10
 cin = 1;	coe = 0;
 A = 16'h000F;	B = 16'h000F;
 
-#5 $display("%b %b %b", C, vout, cout);
+#1 $display("A=%d B=%d Ci=%d = Sum %d %d %d", A, B, cin, C, vout, cout);
 
 #10
 cin = 0;	coe = 0;
 A = 16'h7F00;	B = 16'h0300;
 
-#5 $display("%b %b %b", C, vout, cout);
+#1 $display("A=%d B=%d Ci=%d = Sum %d %d %d", A, B, cin, C, vout, cout);
 
 #10
 cin = 1;	coe = 0;
 A = 16'hFF00;	B = 16'h0100;
 
-#5 $display("%b %b %b", C, vout, cout);
+#1 $display("A=%d B=%d Ci=%d = Sum %d %d %d", A, B, cin, C, vout, cout);
 
 #10
 cin = 1;	coe = 1;
 A = 16'h8100;	B = 16'h8000;
 
-#5 $display("%b %b %b", C, vout, cout);
+#1 $display("A=%d B=%d Ci=%d = Sum %d %d %d", A, B, cin, C, vout, cout);
 
 #5 $finish;
 end

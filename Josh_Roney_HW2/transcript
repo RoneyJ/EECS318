@@ -1,3 +1,4 @@
+# vsim -c Test_adder 
 # //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-36-generic
 # //
 # //  Copyright 1991-2010 Mentor Graphics Corporation
@@ -8,16 +9,12 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim Test_ALU 
-# Loading work.Test_ALU
-# Loading work.ALU
+# Loading work.Test_adder
 # Loading work.adder
-add wave sim/:Test_ALU:alu:*
-run
-# signed addition
-# unsigned addition
-run
-# ** Note: $finish    : ALU.v(321)
-#    Time: 110 fs  Iteration: 0  Instance: :Test_ALU
-# 1
-# Break in Module Test_ALU at ALU.v line 321
+# A=     0 B=     1 Ci=0 = Sum     1 0 0
+# A=    15 B=    15 Ci=1 = Sum    31 0 0
+# A= 32512 B=   768 Ci=0 = Sum 33280 1 0
+# A=  -256 B=   256 Ci=1 = Sum     1 0 1
+# A=-32512 B=-32768 Ci=1 = Sum   257 1 x
+# ** Note: $finish    : adder.v(357)
+#    Time: 50 fs  Iteration: 0  Instance: :Test_adder

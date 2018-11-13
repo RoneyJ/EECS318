@@ -195,7 +195,7 @@ case(alu_code)
 		b = B;
 		cin = 0;
 		coe = 0;
-		if(d == 16'h0000; || d[15])
+		if(d == 16'h0000 || d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
