@@ -176,16 +176,12 @@ case(alu_code)
 	end
 	5'b10010://arithmetic left shift A by the amount B
 	begin
-		shift = 2*B[0] + 2*B[1] + 2*B[2] + 2*B[3];
-		
-		c = A <<< shift;
+		c = $signed(A) <<< B[3:0];
 		over = 0;
 	end
 	5'b10011://arithmetic shift right A by the amount B
 	begin
-		shift = 2*B[0] + 2*B[1] + 2*B[2] + 2*B[3];
-		
-		c = A >>> shift;
+		c = $signed(A) >>> B[3:0];
 		over = 0;
 	end
 	
@@ -193,54 +189,54 @@ case(alu_code)
 	5'b11000://A <= B
 	begin
 		if(A-B <= 0)
-			c = 1;
+			c = 16'h0001;
 		else
-			c = 0;
+			c = 16'h0000;
 
 		over = 0;
 	end
 	5'b11001://A < B
 	begin
 		if(A-B < 0)
-			c = 1;
+			c = 16'h0001;
 		else
-			c = 0;
+			c = 16'h0000;
 
 		over = 0;
 	end
 	5'b11010://A >= B
 	begin
 		if(A-B >= 0)
-			c = 1;
+			c = 16'h0001;
 		else
-			c = 0;
+			c = 16'h0000;
 
 		over = 0;
 	end
 	5'b11011://A > B
 	begin
 		if(A-B > 0)
-			c = 1;
+			c = 16'h0001;
 		else
-			c = 0;
+			c = 16'h0000;
 
 		over = 0;
 	end
 	5'b11100://A = B
 	begin
 		if(A-B == 0)
-			c = 1;
+			c = 16'h0001;
 		else
-			c = 0;
+			c = 16'h0000;
 
 		over = 0;
 	end
 	5'b11101://A != B
 	begin
 		if(A-B == 0)
-			c = 0;
+			c = 16'h0000;
 		else
-			c = 1;
+			c = 16'h0001;
 
 		over = 0;
 	end
