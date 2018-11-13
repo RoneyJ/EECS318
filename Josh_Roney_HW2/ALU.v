@@ -1,3 +1,11 @@
+//ALU module for Homework Assignment 2
+//
+//Takes 2 16-bit inputs and one 5-bit ALU code input.
+//
+//Outputs a 16-bit value, C, and a 1-bit signed overflow value.
+//
+//Josh Roney (jpr87)
+
 `include "adder.v"
 
 module ALU(
@@ -20,7 +28,6 @@ case(alu_code)
 	//Arithmetic operations
 	5'b00000://signed addition
 	begin
-		$display("signed addition");
 		code = 3'b000;
 		a = A;
 		b = B;
@@ -33,7 +40,6 @@ case(alu_code)
 	end
 	5'b00001://unsigned addition
 	begin
-		$display("unsigned addition");
 		code = 3'b001;
 		a = A;
 		b = B;
@@ -162,16 +168,12 @@ case(alu_code)
 	//Shift Operations
 	5'b10000://logic shift left A by the amount B
 	begin
-		shift = 2*B[0] + 2*B[1] + 2*B[2] + 2*B[3];
-		
-		c = A << shift;
+		c = A << B[3:0];
 		over = 0;
 	end
 	5'b10001://logic shift right A by the amount B
 	begin
-		shift = 2*B[0] + 2*B[1] + 2*B[2] + 2*B[3];
-		
-		c = A >> shift;
+		c = A >> B[3:0];
 		over = 0;
 	end
 	5'b10010://arithmetic left shift A by the amount B
@@ -191,6 +193,8 @@ case(alu_code)
 		code = 3'b011;
 		a = A;
 		b = B;
+		cin = 0;
+		coe = 0;
 		if(d == 16'h0000; || d[15])
 			c = 16'h0001;
 		else
@@ -203,6 +207,8 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
+		cin = 0;
+		coe = 0;
 		if(d[15])
 			c = 16'h0001;
 		else
@@ -215,6 +221,8 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
+		cin = 0;
+		coe = 0;
 		if(~d[15])
 			c = 16'h0001;
 		else
@@ -227,6 +235,8 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
+		cin = 0;
+		coe = 0;
 		if(~d[15])
 			c = 16'h0001;
 		else
@@ -239,6 +249,8 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
+		cin = 0;
+		coe = 0;
 		if(d == 16'h0000)
 			c = 16'h0001;
 		else
@@ -251,6 +263,8 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
+		cin = 0;
+		coe = 0;
 		if(d == 16'h0000)
 			c = 16'h0000;
 		else

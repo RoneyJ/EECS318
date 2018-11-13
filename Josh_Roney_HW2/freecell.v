@@ -1,3 +1,6 @@
+//Module for Homework Assignment 2 that plays game 8321 of freecell.
+//Josh Roney (jpr87)
+
 module freecellPlayer(
 	input clock,
 	input [3:0] source,dest,
