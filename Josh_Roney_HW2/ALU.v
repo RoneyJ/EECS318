@@ -34,7 +34,7 @@ case(alu_code)
 		cin = 0;
 		coe = 0;
 		
-		c = d;
+	#1	c = d;
 		over = of;
 		
 	end
@@ -46,7 +46,7 @@ case(alu_code)
 		cin = 0;
 		coe = 0;
 		
-		c = d;
+	#1	c = d;
 		over = 0;
 	end
 	5'b00010://signed subtraction
@@ -54,10 +54,10 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
-		cin = 0;
+		cin = 1;
 		coe = 0;
 		
-		c = d;
+	#1	c = d;
 		over = of;
 	end
 	5'b00011://unsigned subtraction
@@ -65,10 +65,10 @@ case(alu_code)
 		code = 3'b011;
 		a = A;
 		b = B;
-		cin = 0;
+		cin = 1;
 		coe = 0;
 		
-		c = d;
+	#1	c = d;
 		over = 0;
 	end
 	5'b00100://signed increment
@@ -79,7 +79,7 @@ case(alu_code)
 		cin = 0;
 		coe = 0;
 		
-		c = d;
+	#1	c = d;
 		over = of;
 	end
 	5'b00101://signed decrement
@@ -90,7 +90,7 @@ case(alu_code)
 		cin = 0;
 		coe = 0;
 		
-		c = d;
+	#1	c = d;
 		over = of;
 	end
 	
@@ -190,12 +190,13 @@ case(alu_code)
 	//Set condition operations
 	5'b11000://A <= B
 	begin
-		code = 3'b011;
+		code = 3'b010;
 		a = A;
 		b = B;
-		cin = 0;
+		cin = 1;
 		coe = 0;
-		if(d == 16'h0000 || d[15])
+		
+	#1	if(d == 16'h0000 || d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -207,9 +208,10 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
-		cin = 0;
+		cin = 1;
 		coe = 0;
-		if(d[15])
+		
+	#1	if(d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -221,9 +223,10 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
-		cin = 0;
+		cin = 1;
 		coe = 0;
-		if(~d[15])
+		
+	#1	if(~d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -235,9 +238,10 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
-		cin = 0;
+		cin = 1;
 		coe = 0;
-		if(~d[15])
+		
+	#1	if(~d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -249,9 +253,10 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
-		cin = 0;
+		cin = 1;
 		coe = 0;
-		if(d == 16'h0000)
+		
+	#1	if(d == 16'h0000)
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -263,9 +268,10 @@ case(alu_code)
 		code = 3'b010;
 		a = A;
 		b = B;
-		cin = 0;
+		cin = 1;
 		coe = 0;
-		if(d == 16'h0000)
+		
+	#1	if(d == 16'h0000)
 			c = 16'h0000;
 		else
 			c = 16'h0001;
@@ -293,57 +299,113 @@ module Test_ALU;
 
 	initial
 	begin
-	//A = 0;	B = 0;	CODE = 5'b00000;
+	A = 0;	B = 0;	CODE = 5'b00000;
 
-	#5 //add signed
-	A = 16'h7F00;	B = 16'h0300;
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", A, B, CODE, C, overflow);
+
+	#3 //add signed
+	A = 16'h8534;	B = 16'h7546;
 	CODE = 5'b00000;
 
-	#5 //add unsigned
-	A = 16'h0001;	B = 16'h0001;
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), $signed(B), CODE, $signed(C), overflow);
+
+	#3 //add unsigned
 	CODE = 5'b00001;
 
-	#5 //subtract unsigned
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", A, B, CODE, C, overflow);
 
-	#5 //subtract signed
+	#3 //subtract signed
+	CODE = 5'b00010;
 
-	#5 //signed increment
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), $signed(B), CODE, $signed(C), overflow);
 
-	#5 //signed decrement
+	#3 //subtract unsigned
+	CODE = 5'b00011;
 
-	#5 //A AND B
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", A, B, CODE, C, overflow);
 
-	#5 //A OR B
+	#3 //signed increment
+	CODE = 5'b00100;	A = 16'h7fff;
 
-	#5 //A XOR B
+	#2 $display("A=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), CODE, $signed(C), overflow);
 
-	#5 //NOT A
+	#3 //signed decrement
+	CODE = 5'b00101;	A = 16'h8000;
 
-	#5 //logic shift left A
+	#2 $display("A=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), CODE, $signed(C), overflow);
 
-	#5 //logic shift right B
+	#3 //A AND B
+	A = 16'h5555;	B = 16'h6666;
+	CODE = 5'b01000;
 
-	#5 //arithmetic shift left A
+	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
 
-	#5 //arithmetic shift right A
+	#3 //A OR B
+	CODE = 5'b01001;
 
-	#5 //A <= B
+	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
 
-	#5 //A < B
+	#3 //A XOR B
+	CODE = 5'b01010;
 
-	#5 //A <= B
+	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
 
-	#5 //A >= B
+	#3 //NOT A
+	CODE = 5'b01100;
 
-	#5 //A > B
+	#2 $display("A=%h \t CODE=%b \t C=%h \t overflow=%b", A, CODE, C, overflow);
 
-	#5 //A = B
-	CODE = 5'b11100;
+	#3 //logic shift left A
+	A = 16'haaaa;
+	B = 16'h2a74;	CODE = 5'b10000;
+
+	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
+
+	#3 //logic shift right A
+	B = 16'h2a73;	CODE = 5'b10001;
+
+	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
+
+	#3 //arithmetic shift left A
+	B = 16'h2a78;	CODE = 5'b10010;
+
+	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
+
+	#3 //arithmetic shift right A
+	B = 16'h2a7b;	CODE = 5'b10011;
+
+	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
+
+	#3 //A <= B
 	A = 16'h0705;	B = 16'h0705;
+	CODE = 5'b11000;
+
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), $signed(B), CODE, C, overflow);
+
+	#3 //A < B
+	A = 16'h0621;	CODE = 5'b11001;
+
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), $signed(B), CODE, C, overflow);
+
+	#3 //A >= B
+	A = 16'h7301;	CODE = 5'b11010;
+
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), $signed(B), CODE, C, overflow);
+
+	#3 //A > B
+	A = 16'h01bc;	CODE = 5'b11011;
+
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), $signed(B), CODE, C, overflow);
+
+	#3 //A = B
+	CODE = 5'b11100;	A = 16'h0705;
+
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), $signed(B), CODE, C, overflow);
 	
-	#5 //A != B
+	#3 //A != B
 	CODE = 5'b11101;
-	A = 16'h0804;
+
+	#2 $display("A=%d \t B=%d \t CODE=%b \t C=%d \t overflow=%b", $signed(A), $signed(B), CODE, C, overflow);
 
 	#5
 	$finish;

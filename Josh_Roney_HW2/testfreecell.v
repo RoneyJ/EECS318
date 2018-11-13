@@ -51,8 +51,9 @@ module testFreeCell;
     // Play the game. Several illegal moves are interspersed with the
     // legal ones.
     initial begin
-	$monitor("%d  %b %b %d %b",$time, source, dest, fc.mtype, win);
+	$monitor("time=%d  source=%b dest=%b win=%b",$time, source, dest, win);
 	clock = 0;
+
 	doMove("1h");	// 1
 	doMove("1h");	// 2
 	doMove("2h");	// 3
@@ -61,7 +62,7 @@ module testFreeCell;
 	doMove("47");	// 6
 	doMove("a7");	// 7
 	doMove("85");	// 8
-	doMove("45");	// 9
+	/*doMove("45");	// 9
 	doMove("4a");	// 10
 	doMove("42");	// 11
 	doMove("4h");	// 12
@@ -173,8 +174,8 @@ module testFreeCell;
 	doMove("2h");	// 112
 	doMove("4h");	// 113
 	doMove("5h");	// 114
-	doMove("6h");	// 115
-	$finish;
+	doMove("6h");	// 115*/
+	#1 $finish;
     end // initial begin
 
     // Clock generator.

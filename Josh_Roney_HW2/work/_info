@@ -4,47 +4,48 @@ K3
 cModel Technology
 Z0 d/home/jpr87/EECS318/Josh_Roney_HW2
 vadder
-!s100 FO5a:kO3kOe9fVzRRmlX_3
 IN4oB0eRRdE3Z2SG5F[;0m1
 VBG2[0KDF_Je1j>GGdJ24W1
-Z1 w1542128272
-Z2 8adder.v
-Z3 Fadder.v
+Z1 w1542133627
+Z2 Fadder.v
+Z3 8ALU.v
+Z4 FALU.v
 L0 4
-Z4 OL;L;6.5f;42
+Z5 OL;L;6.5f;42
 r1
+31
+Z6 o-L mtiAvm -L mtiOvm -L mtiUPF
+!s100 FO5a:kO3kOe9fVzRRmlX_3
 !s85 0
-31
-Z5 o-L mtiAvm -L mtiOvm -L mtiUPF
 vALU
-IC?kQgZX8S0AUD^@KDcKMQ2
+IV_RcIfWOXa2G7X=:n@n_V1
 V]Hzo7^WokW6`_P7TE2<5=2
-Z6 w1542123328
-Z7 8ALU.v
-Z8 FALU.v
-L0 11
+R1
+R3
 R4
+L0 11
+R5
 r1
 31
-R5
+R6
 n@a@l@u
-!s100 DQ^>Zi^gEJK0Z;PzJ;a_k0
+!s100 `bPOkDzn96@A;o<IeohYH0
 !s85 0
 vfreecellPlayer
-IE`;^[T>abmJe?h73aLUE33
+!s100 oi]J6IbW>Ti_Y<P9BC@<W0
+IUHBKTJATlnF8e:ai0ISWI1
 V<B67JZ8DYBORmWN20T6NB1
-w1542123993
+Z7 w1542141782
 Ffreecell.v
-Z9 8testfreecell.v
-Z10 Ftestfreecell.v
+Z8 8testfreecell.v
+Z9 Ftestfreecell.v
 L0 4
-R4
-r1
-31
 R5
-nfreecell@player
-!s100 ]Hn2JOCf2Rj;W<P<QE5g01
+r1
 !s85 0
+31
+R6
+nfreecell@player
 vmux
 I35OcaJ73m]i`FX3e^6VcW3
 V[oS`Nhbm8A9IZj7D_l3Go2
@@ -52,51 +53,52 @@ w1541455945
 8mux_ex.v
 Fmux_ex.v
 L0 1
-R4
+R5
 r1
 31
-R5
+R6
 !s100 ?A5SZFGSh;Nni35XB6Lga0
 !s85 0
 vTest_adder
-!s100 WBPWOdDkCECSmdg@[<Po]1
 ILHZMeYo2Yij3ogkHDFAQM1
 V2:CS:6Wc]RFW?`Xj`4T7L0
 R1
 R2
 R3
+R4
 L0 316
-R4
-r1
-!s85 0
-31
 R5
-n@test_adder
-vTest_ALU
-I>olBoIShHX;jngna5;h153
-VoOPR?jlf:aIz>B5]FD[`<0
+r1
+31
 R6
-R7
-R8
-L0 288
+n@test_adder
+!s100 WBPWOdDkCECSmdg@[<Po]1
+!s85 0
+vTest_ALU
+I>jWG3]G`>B`kmm8l@g?;L1
+VoOPR?jlf:aIz>B5]FD[`<0
+R1
+R3
 R4
+L0 294
+R5
 r1
 31
-R5
+R6
 n@test_@a@l@u
-!s100 aFiGkFQn[NElS;?I1Jc:m2
+!s100 PMmeZ01?@18JhU<POlSj;2
 !s85 0
 vtestFreeCell
-ISAkVXTQaUj0WKReS;Hd=I1
+!s100 PP4BFXhY77D_@gb^41A4o3
+IH`UC@11Vkf2o`6URPjYm71
 VRXn0lG1S?:fFeC:9ZFIN]0
-w1542123257
+R7
+R8
 R9
-R10
 L0 12
-R4
-r1
-31
 R5
-ntest@free@cell
-!s100 dgoRL@8SFU7[geZPAdd3k1
+r1
 !s85 0
+31
+R6
+ntest@free@cell
