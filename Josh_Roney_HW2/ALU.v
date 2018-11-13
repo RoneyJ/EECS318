@@ -188,7 +188,10 @@ case(alu_code)
 	//Set condition operations
 	5'b11000://A <= B
 	begin
-		if(A-B <= 0)
+		code = 3'b011;
+		a = A;
+		b = B;
+		if(d == 16'h0000; || d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -197,7 +200,10 @@ case(alu_code)
 	end
 	5'b11001://A < B
 	begin
-		if(A-B < 0)
+		code = 3'b010;
+		a = A;
+		b = B;
+		if(d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -206,7 +212,10 @@ case(alu_code)
 	end
 	5'b11010://A >= B
 	begin
-		if(A-B >= 0)
+		code = 3'b010;
+		a = A;
+		b = B;
+		if(~d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -215,7 +224,10 @@ case(alu_code)
 	end
 	5'b11011://A > B
 	begin
-		if(A-B > 0)
+		code = 3'b010;
+		a = A;
+		b = B;
+		if(~d[15])
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -224,7 +236,10 @@ case(alu_code)
 	end
 	5'b11100://A = B
 	begin
-		if(A-B == 0)
+		code = 3'b010;
+		a = A;
+		b = B;
+		if(d == 16'h0000)
 			c = 16'h0001;
 		else
 			c = 16'h0000;
@@ -233,7 +248,10 @@ case(alu_code)
 	end
 	5'b11101://A != B
 	begin
-		if(A-B == 0)
+		code = 3'b010;
+		a = A;
+		b = B;
+		if(d == 16'h0000)
 			c = 16'h0000;
 		else
 			c = 16'h0001;
