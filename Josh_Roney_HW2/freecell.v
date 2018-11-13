@@ -1,6 +1,8 @@
 //Module for Homework Assignment 2 that plays game 8321 of freecell.
 //Josh Roney (jpr87)
 
+//**Incorporate the new integers c0-c7 to allow for larger registers
+
 module freecellPlayer(
 	input clock,
 	input [3:0] source,destination,
@@ -18,7 +20,8 @@ module freecellPlayer(
 	reg [3:0] src,dest;
 	reg [5:0] temp;
 	reg src_valid,dest_valid;
-	integer col_s,col_d;	//integers to mark which column entry is the source and destination
+	integer col_s,col_d;			//integers to mark which column entry is the source and destination
+	integer c0,c1,c2,c3,c4,c5,c6,c7;	//integers to mark last spot with a card in it in a column;
 	
 	reg [5:0] col0 [6:0];	//columns of tableau (array for 6-bit registers)
 	reg [5:0] col1 [6:0];	
