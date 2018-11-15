@@ -62,9 +62,9 @@ module testFreeCell;
 	doMove("47");	// 6
 	doMove("a7");	// 7
 	doMove("85");	// 8
-	/*doMove("45");	// 9
+	doMove("45");	// 9
 	doMove("4a");	// 10
-	doMove("42");	// 11
+	/*doMove("42");	// 11
 	doMove("4h");	// 12
 	doMove("6h");	// 13
 	doMove("4b");	// 14

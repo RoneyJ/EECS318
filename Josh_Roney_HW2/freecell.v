@@ -23,14 +23,14 @@ module freecellPlayer(
 	integer col_s,col_d;			//integers to mark which column entry is the source and destination
 	integer c0,c1,c2,c3,c4,c5,c6,c7;	//integers to mark last spot with a card in it in a column;
 	
-	reg [5:0] col0 [51:0];	//columns of tableau (array for 6-bit registers)
-	reg [5:0] col1 [51:0];	
-	reg [5:0] col2 [51:0];
-	reg [5:0] col3 [51:0];
-	reg [5:0] col4 [51:0];
-	reg [5:0] col5 [51:0];
-	reg [5:0] col6 [51:0];
-	reg [5:0] col7 [51:0];
+	reg [5:0] col0 [15:0];	//columns of tableau (array for 6-bit registers)
+	reg [5:0] col1 [15:0];	
+	reg [5:0] col2 [15:0];
+	reg [5:0] col3 [15:0];
+	reg [5:0] col4 [15:0];
+	reg [5:0] col5 [15:0];
+	reg [5:0] col6 [15:0];
+	reg [5:0] col7 [15:0];
 	reg [5:0] home [3:0];	//homecells (00 = H, 01 = D, 10 = S, 11 = C)
 	reg [5:0] free [3:0];	//free cells
 
@@ -44,13 +44,13 @@ module freecellPlayer(
 		col_d = 0;
 		col_s = 0;
 		c0 = 6;
-		C1 = 6;
-		C2 = 6;
-		C3 = 6;
-		C4 = 5;
-		C5 = 5;
-		C6 = 5;
-		C7 = 5;
+		c1 = 6;
+		c2 = 6;
+		c3 = 6;
+		c4 = 5;
+		c5 = 5;
+		c6 = 5;
+		c7 = 5;
 		
 		//homecells and free cells initiall empty
 		home[0] = 6'b000000;
@@ -70,6 +70,15 @@ module freecellPlayer(
 		col0[4] = 6'b100011; //3 of spades
 		col0[5] = 6'b010001; //ace of diamonds
 		col0[6] = 6'b000001; //ace of hearts
+		col0[7] = 6'h00;     //empty
+		col0[8] = 6'h00;
+		col0[9] = 6'h00;
+		col0[10] = 6'h00;
+		col0[11] = 6'h00;
+		col0[12] = 6'h00;
+		col0[13] = 6'h00;
+		col0[14] = 6'h00;
+		col0[15] = 6'h00;
 		//initial state of c1
 		col1[0] = 6'b100101; //5 of spades
 		col1[1] = 6'b101010; //10 of spades
@@ -78,6 +87,15 @@ module freecellPlayer(
 		col1[4] = 6'b000110; //6 of hearts
 		col1[5] = 6'b001101; //king of hearts
 		col1[6] = 6'b000010; //2 of hearts
+		col1[7] = 6'h00;     //empty
+		col1[8] = 6'h00;
+		col1[9] = 6'h00;
+		col1[10] = 6'h00;
+		col1[11] = 6'h00;
+		col1[12] = 6'h00;
+		col1[13] = 6'h00;
+		col1[14] = 6'h00;
+		col1[15] = 6'h00;
 		//initial state of c2
 		col2[0] = 6'b101011; //jack of spades
 		col2[1] = 6'b110111; //7 of clubs
@@ -86,6 +104,15 @@ module freecellPlayer(
 		col2[4] = 6'b110010; //2 of clubs
 		col2[5] = 6'b101101; //king of spades
 		col2[6] = 6'b110001; //ace of clubs
+		col2[7] = 6'h00;     //empty
+		col2[8] = 6'h00;
+		col2[9] = 6'h00;
+		col2[10] = 6'h00;
+		col2[11] = 6'h00;
+		col2[12] = 6'h00;
+		col2[13] = 6'h00;
+		col2[14] = 6'h00;
+		col2[15] = 6'h00;
 		//initial state of c3
 		col3[0] = 6'b000100; //4 of hearts
 		col3[1] = 6'b100001; //ace of spades
@@ -94,6 +121,15 @@ module freecellPlayer(
 		col3[4] = 6'b100111; //7 of spades
 		col3[5] = 6'b001001; //9 of hearts
 		col3[6] = 6'b101000; //8 of spades
+		col3[7] = 6'h00;     //empty
+		col3[8] = 6'h00;
+		col3[9] = 6'h00;
+		col3[10] = 6'h00;
+		col3[11] = 6'h00;
+		col3[12] = 6'h00;
+		col3[13] = 6'h00;
+		col3[14] = 6'h00;
+		col3[15] = 6'h00;
 		//initial state of c4
 		col4[0] = 6'b011100; //queen of diamonds
 		col4[1] = 6'b001011; //jack of hearts
@@ -101,6 +137,16 @@ module freecellPlayer(
 		col4[3] = 6'b100110; //6 of spades
 		col4[4] = 6'b010010; //2 of diamonds
 		col4[5] = 6'b101001; //9 of spades
+		col4[6] = 6'h00;     //empty
+		col4[7] = 6'h00;     
+		col4[8] = 6'h00;
+		col4[9] = 6'h00;
+		col4[10] = 6'h00;
+		col4[11] = 6'h00;
+		col4[12] = 6'h00;
+		col4[13] = 6'h00;
+		col4[14] = 6'h00;
+		col4[15] = 6'h00;
 		//initial state of c5
 		col5[0] = 6'b010101; //5 of diamonds
 		col5[1] = 6'b011101; //king of diamonds
@@ -108,6 +154,16 @@ module freecellPlayer(
 		col5[3] = 6'b011001; //9 of diamonds
 		col5[4] = 6'b000011; //3 of hearts
 		col5[5] = 6'b100010; //2 of spades
+		col5[6] = 6'h00;     //empty
+		col5[7] = 6'h00;     
+		col5[8] = 6'h00;
+		col5[9] = 6'h00;
+		col5[10] = 6'h00;
+		col5[11] = 6'h00;
+		col5[12] = 6'h00;
+		col5[13] = 6'h00;
+		col5[14] = 6'h00;
+		col5[15] = 6'h00;
 		//initial state of c6
 		col6[0] = 6'b000101; //5 of hearts
 		col6[1] = 6'b010011; //3 of diamonds
@@ -115,6 +171,16 @@ module freecellPlayer(
 		col6[3] = 6'b010111; //7 of diamonds
 		col6[4] = 6'b111101; //king of clubs
 		col6[5] = 6'b111010; //10 of clubs
+		col6[6] = 6'h00;     //empty
+		col6[7] = 6'h00;     
+		col6[8] = 6'h00;
+		col6[9] = 6'h00;
+		col6[10] = 6'h00;
+		col6[11] = 6'h00;
+		col6[12] = 6'h00;
+		col6[13] = 6'h00;
+		col6[14] = 6'h00;
+		col6[15] = 6'h00;
 		//initial state of c7
 		col7[0] = 6'b111011; //jack of clubs
 		col7[1] = 6'b010100; //4 of diamonds
@@ -122,6 +188,16 @@ module freecellPlayer(
 		col7[3] = 6'b111000; //8 of clubs
 		col7[4] = 6'b000111; //7 of hearts
 		col7[5] = 6'b011000; //8 of diamonds
+		col7[6] = 6'h00;     //empty
+		col7[7] = 6'h00;     
+		col7[8] = 6'h00;
+		col7[9] = 6'h00;
+		col7[10] = 6'h00;
+		col7[11] = 6'h00;
+		col7[12] = 6'h00;
+		col7[13] = 6'h00;
+		col7[14] = 6'h00;
+		col7[15] = 6'h00;
 	end
 
 	always @(posedge clock) //at positive edge of the clock, check validity of source and destination
@@ -188,96 +264,96 @@ module freecellPlayer(
 			
 			4'b0000: //source is column 0
 			begin
-				if(col0 == 0)
+				if(col0[0] == 0) //if column is empty, invalid source
 					src_valid = 0;
 				else
 				begin
 					src_valid = 1;
-					temp = col0(c0);
+					temp = col0[c0];
 					col_s = c0;
 				end
 			end
 			
 			4'b0001: //source is column 1
 			begin
-				if(col1 == 0)
+				if(col1[0] == 0)
 					src_valid = 0;
 				else
 				begin
 					src_valid = 1;
-					temp = col1(c1);
+					temp = col1[c1];
 					col_s = c1;
 				end
 			end
 			
 			4'b0010: //source is column 2
 			begin
-				if(col2 == 0)
+				if(col2[0] == 0)
 					src_valid = 0;
 				else
 				begin
 					src_valid = 1;
-					temp = col2(c2);
+					temp = col2[c2];
 					col_s = c2;
 				end
 			end
 			
 			4'b0011: //source is column 3
 			begin
-				if(col3 == 0)
+				if(col3[0] == 0)
 					src_valid = 0;
 				else
 				begin
 					src_valid = 1;
-					temp = col3(c3);
+					temp = col3[c3];
 					col_s = c3;
 				end
 			end
 			
 			4'b0100: //source is column 4
 			begin
-				if(col4 == 0)
+				if(col4[0] == 0)
 					src_valid = 0;
 				else
 				begin
 					src_valid = 1;
-					temp = col4(c4);
+					temp = col4[c4];
 					col_s = c4;
 				end
 			end
 			
 			4'b0101: //source is column 5
 			begin
-				if(col5 == 0)
+				if(col5[0] == 0)
 					src_valid = 0;
 				else
 				begin
 					src_valid = 1;
-					temp = col5(c5);
+					temp = col5[c5];
 					col_s = c5;
 				end
 			end
 			
 			4'b0110: //source is column 6
 			begin
-				if(col6 == 0)
+				if(col6[0] == 0)
 					src_valid = 0;
 				else
 				begin
 					src_valid = 1;
-					temp = col6(c6);
+					temp = col6[c6];
 					col_s = c6;
 				end
 			end
 			
 			4'b0111: //source is column 7
 			begin
-				if(col7 == 0)
+				if(col7[0] == 0)
 					src_valid = 0;
 				else
 				begin
 					src_valid = 1;
-					temp = col7(c7);
+					temp = col7[c7];
 					col_s = c7;
 				end
 			end
@@ -347,7 +423,7 @@ module freecellPlayer(
 			
 			4'b0000: //destination is column 0
 			begin
-				if(col0 == 0)
+				if(col0[0] == 0) //if column is empty, valid destination
 					dest_valid = 1;
 				else
 				begin
@@ -363,7 +439,7 @@ module freecellPlayer(
 			
 			4'b0001: //destination is column 1
 			begin
-				if(col1 == 0)
+				if(col1[0] == 0)
 					dest_valid = 1;
 				else
 				begin
@@ -379,7 +455,7 @@ module freecellPlayer(
 			
 			4'b0010: //destination is column 2
 			begin
-				if(col2 == 0)
+				if(col2[0] == 0)
 					dest_valid = 1;
 				else
 				begin
@@ -395,7 +471,7 @@ module freecellPlayer(
 			
 			4'b0011: //destination is column 3
 			begin
-				if(col3 == 0)
+				if(col3[0] == 0)
 					dest_valid = 1;
 				else
 				begin
@@ -411,7 +487,7 @@ module freecellPlayer(
 			
 			4'b0100: //destination is column 4
 			begin
-				if(col4 == 0)
+				if(col4[0] == 0)
 					dest_valid = 1;
 				else
 				begin
@@ -427,7 +503,7 @@ module freecellPlayer(
 			
 			4'b0101: //destination is column 5
 			begin
-				if(col5 == 0)
+				if(col5[0] == 0)
 					dest_valid = 1;
 				else
 				begin
@@ -443,7 +519,7 @@ module freecellPlayer(
 			
 			4'b0110: //destination is column 6
 			begin
-				if(col6 == 0)
+				if(col6[0] == 0)
 					dest_valid = 1;
 				else
 				begin
@@ -459,7 +535,7 @@ module freecellPlayer(
 			
 			4'b0111: //destination is column 7
 			begin
-				if(col7 == 0)
+				if(col7[0] == 0)
 					dest_valid = 1;
 				else
 				begin
