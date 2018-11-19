@@ -1,3 +1,4 @@
+# vsim -c testHandshake 
 # //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-36-generic
 # //
 # //  Copyright 1991-2010 Mentor Graphics Corporation
@@ -8,10 +9,19 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim testHandshake 
 # Loading work.testHandshake
 # Loading work.Handshake
-add wave sim/:testHandshake:h:*
-run
-# 1
-# Break in Module testHandshake at handshake.v line 102
+# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0
+# R = 1 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0
+# R = 1 	 A = 0 	 Reset = 0 	 E = 0 	 state = 1
+# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 1
+# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 2
+# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 2
+# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 3
+# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 3
+# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0
+# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 0
+# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 4
+# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 4
+# R = 1 	 A = 1 	 Reset = 0 	 E = 1 	 state = 4
+# R = 1 	 A = 1 	 Reset = 1 	 E = 0 	 state = 0

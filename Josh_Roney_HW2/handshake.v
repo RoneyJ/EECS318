@@ -4,7 +4,7 @@
 
 module Handshake(
 	input R,A,RESET,clk,	//Request, Acknowledge, asynchronous RESET
-	output E.		//Error
+	output E,		//Error
 	output [2:0] state
 );
 
@@ -85,7 +85,7 @@ module testHandshake();
 
 	initial
 	begin
-	$monitor("R = %b \t A = %b \t Reset = %b \t state = %h", R, A, RESET, state);
+	$monitor("R = %b \t A = %b \t Reset = %b \t E = %b \t state = %h", R, A, RESET, E, state);
 	R = 0;	A = 0;	RESET = 0;
 	clk = 0;
 

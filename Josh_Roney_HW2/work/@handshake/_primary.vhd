@@ -6,6 +6,7 @@ entity Handshake is
         A               : in     vl_logic;
         RESET           : in     vl_logic;
         clk             : in     vl_logic;
-        E               : out    vl_logic
+        E               : out    vl_logic;
+        state           : out    vl_logic_vector(2 downto 0)
     );
 end Handshake;
