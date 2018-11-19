@@ -64,7 +64,7 @@ module testFreeCell;
 	doMove("85");	// 8
 	doMove("45");	// 9
 	doMove("4a");	// 10
-	/*doMove("42");	// 11
+	doMove("42");	// 11
 	doMove("4h");	// 12
 	doMove("6h");	// 13
 	doMove("4b");	// 14
@@ -174,7 +174,7 @@ module testFreeCell;
 	doMove("2h");	// 112
 	doMove("4h");	// 113
 	doMove("5h");	// 114
-	doMove("6h");	// 115*/
+	doMove("6h");	// 115
 	#1 $finish;
     end // initial begin
 

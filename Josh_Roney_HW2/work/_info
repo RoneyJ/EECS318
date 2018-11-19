@@ -6,7 +6,7 @@ Z0 d/home/jpr87/EECS318/Josh_Roney_HW2
 vadder
 IN4oB0eRRdE3Z2SG5F[;0m1
 VBG2[0KDF_Je1j>GGdJ24W1
-Z1 w1542133627
+Z1 w1542650967
 Z2 Fadder.v
 Z3 8ALU.v
 Z4 FALU.v
@@ -32,20 +32,47 @@ n@a@l@u
 !s100 `bPOkDzn96@A;o<IeohYH0
 !s85 0
 vfreecellPlayer
-!s100 PzXVR3g8@m>zU4HlgU8F81
-IEoEYf`h37I=NGUgT<Aen50
+IMTSW?GZFIT6WhJoRX23Mj0
 V<B67JZ8DYBORmWN20T6NB1
-Z7 w1542298894
+Z7 w1542652923
 Ffreecell.v
 Z8 8testfreecell.v
 Z9 Ftestfreecell.v
 L0 6
 R5
 r1
-!s85 0
 31
 R6
 nfreecell@player
+!s100 CEdB=62C4XjE^oO:NQDOX0
+!s85 0
+vHandshake
+!s100 aA9l>SIX^aRGY^Q=>=I4X3
+I?iPRKgZ4jPh2KQliSFJ7V0
+VDnjTmGB_:[_W=7]_i5nL]1
+Z10 w1542658774
+Z11 8handshake.v
+Z12 Fhandshake.v
+L0 5
+R5
+r1
+!s85 0
+31
+R6
+n@handshake
+vhandshake
+IzcobR8QHE[ckROWGNi:A42
+VUQVW?dYR[?RkOi9VRDOag3
+w1542658342
+R11
+R12
+L0 5
+R5
+r1
+31
+R6
+!s100 1zbTbnzbDPcC7X:7L5Q_n1
+!s85 0
 vmux
 I35OcaJ73m]i`FX3e^6VcW3
 V[oS`Nhbm8A9IZj7D_l3Go2
@@ -89,8 +116,7 @@ n@test_@a@l@u
 !s100 PMmeZ01?@18JhU<POlSj;2
 !s85 0
 vtestFreeCell
-!s100 7l9=Tj@Cj0h82LRV43;B81
-I5IH931je>eBS8=NiLOVi;1
+I8jmgR5g1>Y?IL:MON@C0J2
 VRXn0lG1S?:fFeC:9ZFIN]0
 R7
 R8
@@ -98,7 +124,22 @@ R9
 L0 12
 R5
 r1
-!s85 0
 31
 R6
 ntest@free@cell
+!s100 <4]znd;S?=g[4mD6AIMe42
+!s85 0
+vtestHandshake
+!s100 VZl_MN4IP>D?6igdYcddY2
+IY[9d4=>g]o9O:iGHBW`fL1
+VEef>g4ziRolFPm2h;K?G^2
+R10
+R11
+R12
+L0 79
+R5
+r1
+!s85 0
+31
+R6
+ntest@handshake

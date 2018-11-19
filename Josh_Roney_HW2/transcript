@@ -8,86 +8,10 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim testFreeCell 
-# Loading work.testFreeCell
-# Loading work.freecellPlayer
-add wave sim/:testFreeCell:fc:*
+# vsim testHandshake 
+# Loading work.testHandshake
+# Loading work.Handshake
+add wave sim/:testHandshake:h:*
 run
-# illegal move
-# time=                   0  source=0000 dest=1100 win=0
-# source valid : 1 	 destination : 1100
-# card 01 in spot 0000 was moved to spot 1100
-# source valid : 1 	 destination : 1100
-# card 11 in spot 0000 was moved to spot 1100
-# time=                  20  source=0001 dest=1100 win=0
-# source valid : 1 	 destination : 1100
-# card 02 in spot 0001 was moved to spot 1100
-# time=                  30  source=0010 dest=1100 win=0
-# source valid : 1 	 destination : 1100
-# card 31 in spot 0010 was moved to spot 1100
-# time=                  40  source=0011 dest=1000 win=0
-# source valid : 1 	 destination : 1000
-# card 28 in spot 0011 was moved to spot 1000
-# time=                  50  source=0011 dest=0110 win=0
-# source valid : 1 	 destination : 0110
-# card 09 in spot 0011 was moved to spot 0110
-# time=                  60  source=1000 dest=0110 win=0
-# source valid : 1 	 destination : 0110
-# card 28 in spot 1000 was moved to spot 0110
-# time=                  70  source=0111 dest=0100 win=0
-# source valid : 1 	 destination : 0100
-# card 18 in spot 0111 was moved to spot 0100
-# time=                  80  source=0011 dest=0100 win=0
-# source valid : 1 	 destination : 0100
-# card 27 in spot 0011 was moved to spot 0100
-# time=                  90  source=0011 dest=1000 win=0
-# source valid : 1 	 destination : 1000
-# card 35 in spot 0011 was moved to spot 1000
-run
-# ** Note: $finish    : testfreecell.v(178)
-#    Time: 101 fs  Iteration: 0  Instance: :testFreeCell
 # 1
-# Break in Module testFreeCell at testfreecell.v line 178
-restart
-add wave \
-{sim/:testFreeCell:fc:col0 } \
-{sim/:testFreeCell:fc:col1 } \
-{sim/:testFreeCell:fc:col2 } \
-{sim/:testFreeCell:fc:col3 } \
-{sim/:testFreeCell:fc:col4 } \
-{sim/:testFreeCell:fc:col5 } \
-{sim/:testFreeCell:fc:col6 } \
-{sim/:testFreeCell:fc:col7 } \
-{sim/:testFreeCell:fc:home } \
-{sim/:testFreeCell:fc:free } 
-run
-# illegal move
-# time=                   0  source=0000 dest=1100 win=0
-# source valid : 1 	 destination : 1100
-# card 01 in spot 0000 was moved to spot 1100
-# source valid : 1 	 destination : 1100
-# card 11 in spot 0000 was moved to spot 1100
-# time=                  20  source=0001 dest=1100 win=0
-# source valid : 1 	 destination : 1100
-# card 02 in spot 0001 was moved to spot 1100
-# time=                  30  source=0010 dest=1100 win=0
-# source valid : 1 	 destination : 1100
-# card 31 in spot 0010 was moved to spot 1100
-# time=                  40  source=0011 dest=1000 win=0
-# source valid : 1 	 destination : 1000
-# card 28 in spot 0011 was moved to spot 1000
-# time=                  50  source=0011 dest=0110 win=0
-# source valid : 1 	 destination : 0110
-# card 09 in spot 0011 was moved to spot 0110
-# time=                  60  source=1000 dest=0110 win=0
-# source valid : 1 	 destination : 0110
-# card 28 in spot 1000 was moved to spot 0110
-# time=                  70  source=0111 dest=0100 win=0
-# source valid : 1 	 destination : 0100
-# card 18 in spot 0111 was moved to spot 0100
-# time=                  80  source=0011 dest=0100 win=0
-# source valid : 1 	 destination : 0100
-# card 27 in spot 0011 was moved to spot 0100
-# time=                  90  source=0011 dest=1000 win=0
-# source valid : 1 	 destination : 1000
-# card 35 in spot 0011 was moved to spot 1000
+# Break in Module testHandshake at handshake.v line 102

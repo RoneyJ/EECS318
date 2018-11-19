@@ -639,17 +639,17 @@ module freecellPlayer(
 
 			4'b1001: //free cell b
 			begin
-			free[0] = temp;
+			free[1] = temp;
 			end
 
 			4'b1010: //free cell c
 			begin
-			free[0] = temp;
+			free[2] = temp;
 			end
 
 			4'b1011: //free cell d
 			begin
-			free[0] = temp;
+			free[3] = temp;
 			end
 
 			4'b0000: //column 0
