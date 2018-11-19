@@ -8,7 +8,7 @@ module Handshake(
 	output [2:0] state
 );
 
-	reg r,a,e;
+	reg e;
 	reg [2:0] State;
 	localparam [2:0]
 		S0 = 3'b000,
@@ -37,7 +37,7 @@ module Handshake(
 			begin
 			if(R && ~A)
 				State = S1;
-			else if(a)
+			else if(A)
 				State = S4;
 			end
 
