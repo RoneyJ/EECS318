@@ -175,12 +175,34 @@ case(alu_code)
 	end
 	5'b10010://arithmetic left shift A by the amount B
 	begin
-		c = A <<< B[3:0];
+		//doesn't matter if A is signed or not, zeroes still fill in
+		c = A << B[3:0]; 
 		over = 0;
 	end
 	5'b10011://arithmetic shift right A by the amount B
 	begin
-		c = A >>> B[3:0];
+		if(B[0])
+		shift = shift + 1;
+
+		if(B[1])
+		shift = shift + 2;
+
+		if(B[2])
+		shift = shift + 4;
+
+		if(B[3])
+		shift = shift + 8;
+
+		if(A[15])
+		begin
+			c = {shift{1'b1},A[15:0+shift]};
+		end
+
+		else
+		begin
+			c = A >> B[3:0];
+		end
+		//c = $signed(A) >>> B[3:0];
 		over = 0;
 	end
 	
