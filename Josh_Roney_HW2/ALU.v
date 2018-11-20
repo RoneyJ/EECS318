@@ -8,12 +8,11 @@
 
 //`include "adder.v"
 
-module ALU(
-	input [15:0] A,B,
-	input [4:0] alu_code,
-	output [15:0] C,
-	output overflow
-);
+module ALU(A,B,alu_code,C,overflow);
+input [15:0] A,B;
+input [4:0] alu_code;
+output [15:0] C;
+output overflow;
 reg [15:0] a, b, c;
 wire [15:0] d;
 wire of,cout;
@@ -176,7 +175,7 @@ case(alu_code)
 		c = A >> B[3:0];
 		over = 0;
 	end
-	5'b10010://arithmetic left shift A by the amount B
+	/*5'b10010://arithmetic left shift A by the amount B
 	begin
 		c = $signed(A) <<< B[3:0];
 		over = 0;
@@ -185,7 +184,7 @@ case(alu_code)
 	begin
 		c = $signed(A) >>> B[3:0];
 		over = 0;
-	end
+	end*/
 	
 	//Set condition operations
 	5'b11000://A <= B
@@ -290,7 +289,7 @@ assign C = c;
 assign overflow = over;
 
 endmodule
-
+/*
 module Test_ALU;
 	reg [15:0] A,B;
 	reg [4:0] CODE;
@@ -412,4 +411,4 @@ module Test_ALU;
 	end
 
 	ALU alu(A,B,CODE,C,overflow);
-endmodule
+endmodule*/

@@ -1,13 +1,12 @@
 //16-bit adder module for use with ALU.v
 //Josh Roney (jpr87)
 
-module adder(
-	input [15:0] A,B,
-	input [2:0] CODE,
-	input cin, coe,//carry input and carry output enable (active low)
-	output [15:0] C,
-	output vout, cout //signed overflow and carry output
-);
+module adder(A,B,CODE,cin,coe,C,vout,cout);
+input [15:0] A,B;
+input [2:0] CODE;
+input cin, coe;//carry input and carry output enable (active low)
+output [15:0] C;
+output vout, cout; //signed overflow and carry output
 reg [15:0] a, b, c, carry;
 reg cn,en,vo,co;
 

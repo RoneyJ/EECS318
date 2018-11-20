@@ -4,45 +4,44 @@ K3
 cModel Technology
 Z0 d/home/jpr87/EECS318/Josh_Roney_HW2
 vadder
-IN4oB0eRRdE3Z2SG5F[;0m1
+IZCXP6=B:1U]L[BWd9Poc[3
 VBG2[0KDF_Je1j>GGdJ24W1
-Z1 w1542650967
-Z2 Fadder.v
-Z3 8ALU.v
-Z4 FALU.v
+w1542747957
+8adder.v
+Z1 Fadder.v
 L0 4
-Z5 OL;L;6.5f;42
+Z2 OL;L;6.5f;42
 r1
 31
-Z6 o-L mtiAvm -L mtiOvm -L mtiUPF
-!s100 FO5a:kO3kOe9fVzRRmlX_3
+Z3 o-L mtiAvm -L mtiOvm -L mtiUPF
+!s100 6cgbNEnU<7X[?J=lY^JfH0
 !s85 0
 vALU
-IV_RcIfWOXa2G7X=:n@n_V1
+!s100 61_A>h?XdRmLdCP3:f7`f3
+I_4NOJQVCYYBXjafI>Lgza0
 V]Hzo7^WokW6`_P7TE2<5=2
-R1
-R3
-R4
+w1542748671
+Z4 8ALU.v
+Z5 FALU.v
 L0 11
-R5
+R2
 r1
-31
-R6
-n@a@l@u
-!s100 `bPOkDzn96@A;o<IeohYH0
 !s85 0
+31
+R3
+n@a@l@u
 vfreecellPlayer
 IMTSW?GZFIT6WhJoRX23Mj0
 V<B67JZ8DYBORmWN20T6NB1
-Z7 w1542652923
+Z6 w1542652923
 Ffreecell.v
-Z8 8testfreecell.v
-Z9 Ftestfreecell.v
+Z7 8testfreecell.v
+Z8 Ftestfreecell.v
 L0 6
-R5
+R2
 r1
 31
-R6
+R3
 nfreecell@player
 !s100 CEdB=62C4XjE^oO:NQDOX0
 !s85 0
@@ -50,29 +49,29 @@ vhandshake
 IzcobR8QHE[ckROWGNi:A42
 VUQVW?dYR[?RkOi9VRDOag3
 w1542658342
-Z10 8handshake.v
-Z11 Fhandshake.v
+Z9 8handshake.v
+Z10 Fhandshake.v
 L0 5
-R5
+R2
 r1
 31
-R6
+R3
 !s100 1zbTbnzbDPcC7X:7L5Q_n1
 !s85 0
 vHandshake
-!s100 AM_I7RRNcIachDZAFfXd;3
 IGhKPVnobCbQFPHG[cjoj11
 VBo<0f6YPO;VYZY@czfSfl0
-Z12 w1542727640
+Z11 w1542727640
+R9
 R10
-R11
 L0 5
-R5
+R2
 r1
-!s85 0
 31
-R6
+R3
 n@handshake
+!s100 AM_I7RRNcIachDZAFfXd;3
+!s85 0
 vmux
 I35OcaJ73m]i`FX3e^6VcW3
 V[oS`Nhbm8A9IZj7D_l3Go2
@@ -80,66 +79,66 @@ w1541455945
 8mux_ex.v
 Fmux_ex.v
 L0 1
-R5
+R2
 r1
 31
-R6
+R3
 !s100 ?A5SZFGSh;Nni35XB6Lga0
 !s85 0
 vTest_adder
 ILHZMeYo2Yij3ogkHDFAQM1
 V2:CS:6Wc]RFW?`Xj`4T7L0
+w1542650967
 R1
-R2
-R3
 R4
-L0 316
 R5
+L0 316
+R2
 r1
 31
-R6
+R3
 n@test_adder
 !s100 WBPWOdDkCECSmdg@[<Po]1
 !s85 0
 vTest_ALU
-I>jWG3]G`>B`kmm8l@g?;L1
+Ih5ZTokGKV2V[eVM3Dn@g;3
 VoOPR?jlf:aIz>B5]FD[`<0
-R1
-R3
+w1542747739
 R4
-L0 294
 R5
+L0 293
+R2
 r1
 31
-R6
+R3
 n@test_@a@l@u
-!s100 PMmeZ01?@18JhU<POlSj;2
+!s100 RAK585d:Ne1kemNo_2Le@0
 !s85 0
 vtestFreeCell
 I8jmgR5g1>Y?IL:MON@C0J2
 VRXn0lG1S?:fFeC:9ZFIN]0
+R6
 R7
 R8
-R9
 L0 12
-R5
+R2
 r1
 31
-R6
+R3
 ntest@free@cell
 !s100 <4]znd;S?=g[4mD6AIMe42
 !s85 0
 vtestHandshake
-!s100 @S;ca`EKX1]Tb@o]m98dE2
 IPog1]_?cC]z?O_<GhD^Pj1
 VEef>g4ziRolFPm2h;K?G^2
-R12
-R10
 R11
+R9
+R10
 L0 95
-R5
+R2
 r1
-!s85 0
 31
-R6
+R3
 ntest@handshake
+!s100 @S;ca`EKX1]Tb@o]m98dE2
+!s85 0
