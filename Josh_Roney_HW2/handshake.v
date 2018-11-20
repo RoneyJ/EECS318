@@ -38,7 +38,11 @@ module Handshake(
 			if(R && ~A)
 				State = S1;
 			else if(A)
-				State = S4;
+			begin
+                                State = S4;
+                                e = 1;
+                        end
+
 			end
 
 			S1:
@@ -46,7 +50,11 @@ module Handshake(
 			if(R && A)
 				State = S2;
 			else if(~R && ~A)
-				State = S4;
+			begin
+                                State = S4;
+                                e = 1;
+                        end
+
 			end
 
 			S2:
@@ -54,7 +62,11 @@ module Handshake(
 			if(~R && A)
 				State = S3;
 			if(R && ~A)
-				State = S4;
+			begin
+                                State = S4;
+                                e = 1;
+                        end
+
 			end
 
 			S3:
@@ -62,13 +74,15 @@ module Handshake(
 			if(~R && ~A)
 				State = S0;
 			else if(R && A)
+			begin
 				State = S4;
+				e = 1;
+			end
 			end
 
 			S4:
 			begin
 			//remain here until RESET
-			e = 1;
 			end
 		endcase
 	end
@@ -85,7 +99,7 @@ module testHandshake();
 
 	initial
 	begin
-	$monitor("R = %b \t A = %b \t Reset = %b \t E = %b \t state = %h", R, A, RESET, E, state);
+	$monitor("R = %b \t A = %b \t Reset = %b \t E = %b \t state = %h \t clock = %b", R, A, RESET, E, state, clk);
 	R = 0;	A = 0;	RESET = 0;
 	clk = 0;
 
@@ -97,11 +111,11 @@ module testHandshake();
 	
 	#10 A = 0;
 
-	#20 A = 1;
+	#10 A = 1;
 
-	#10 R = 1;
+	#10  R = 1;
 
-	#3 RESET = 1;
+	#14 RESET = 1;
 
 	#5 $finish();
 	end

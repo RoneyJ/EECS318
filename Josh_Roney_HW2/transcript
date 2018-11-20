@@ -11,17 +11,25 @@
 # //
 # Loading work.testHandshake
 # Loading work.Handshake
-# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0
-# R = 1 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0
-# R = 1 	 A = 0 	 Reset = 0 	 E = 0 	 state = 1
-# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 1
-# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 2
-# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 2
-# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 3
-# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 3
-# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0
-# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 0
-# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 4
-# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 4
-# R = 1 	 A = 1 	 Reset = 0 	 E = 1 	 state = 4
-# R = 1 	 A = 1 	 Reset = 1 	 E = 0 	 state = 0
+# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0 	 clock = 0
+# R = 1 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0 	 clock = 0
+# R = 1 	 A = 0 	 Reset = 0 	 E = 0 	 state = 1 	 clock = 1
+# R = 1 	 A = 0 	 Reset = 0 	 E = 0 	 state = 1 	 clock = 0
+# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 1 	 clock = 0
+# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 2 	 clock = 1
+# R = 1 	 A = 1 	 Reset = 0 	 E = 0 	 state = 2 	 clock = 0
+# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 2 	 clock = 0
+# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 3 	 clock = 1
+# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 3 	 clock = 0
+# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 3 	 clock = 0
+# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0 	 clock = 1
+# R = 0 	 A = 0 	 Reset = 0 	 E = 0 	 state = 0 	 clock = 0
+# R = 0 	 A = 1 	 Reset = 0 	 E = 0 	 state = 0 	 clock = 0
+# R = 0 	 A = 1 	 Reset = 0 	 E = 1 	 state = 4 	 clock = 1
+# R = 0 	 A = 1 	 Reset = 0 	 E = 1 	 state = 4 	 clock = 0
+# R = 1 	 A = 1 	 Reset = 0 	 E = 1 	 state = 4 	 clock = 0
+# R = 1 	 A = 1 	 Reset = 0 	 E = 1 	 state = 4 	 clock = 1
+# R = 1 	 A = 1 	 Reset = 0 	 E = 1 	 state = 4 	 clock = 0
+# R = 1 	 A = 1 	 Reset = 0 	 E = 1 	 state = 4 	 clock = 1
+# R = 1 	 A = 1 	 Reset = 1 	 E = 0 	 state = 0 	 clock = 1
+# R = 1 	 A = 1 	 Reset = 1 	 E = 0 	 state = 0 	 clock = 0

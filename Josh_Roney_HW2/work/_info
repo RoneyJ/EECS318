@@ -46,26 +46,12 @@ R6
 nfreecell@player
 !s100 CEdB=62C4XjE^oO:NQDOX0
 !s85 0
-vHandshake
-!s100 z7C>j=cOM_>P@>e@S=EMj1
-IPS]I`;TzA3lX8z1Y44fC?1
-VBo<0f6YPO;VYZY@czfSfl0
-Z10 w1542660455
-Z11 8handshake.v
-Z12 Fhandshake.v
-L0 5
-R5
-r1
-!s85 0
-31
-R6
-n@handshake
 vhandshake
 IzcobR8QHE[ckROWGNi:A42
 VUQVW?dYR[?RkOi9VRDOag3
 w1542658342
-R11
-R12
+Z10 8handshake.v
+Z11 Fhandshake.v
 L0 5
 R5
 r1
@@ -73,6 +59,20 @@ r1
 R6
 !s100 1zbTbnzbDPcC7X:7L5Q_n1
 !s85 0
+vHandshake
+!s100 AM_I7RRNcIachDZAFfXd;3
+IGhKPVnobCbQFPHG[cjoj11
+VBo<0f6YPO;VYZY@czfSfl0
+Z12 w1542727640
+R10
+R11
+L0 5
+R5
+r1
+!s85 0
+31
+R6
+n@handshake
 vmux
 I35OcaJ73m]i`FX3e^6VcW3
 V[oS`Nhbm8A9IZj7D_l3Go2
@@ -130,13 +130,13 @@ ntest@free@cell
 !s100 <4]znd;S?=g[4mD6AIMe42
 !s85 0
 vtestHandshake
-!s100 ]Flez;STaJMEj@K9^EP@B2
-IC_d?1UAm7Rc:zaER52igR3
+!s100 @S;ca`EKX1]Tb@o]m98dE2
+IPog1]_?cC]z?O_<GhD^Pj1
 VEef>g4ziRolFPm2h;K?G^2
+R12
 R10
 R11
-R12
-L0 81
+L0 95
 R5
 r1
 !s85 0
