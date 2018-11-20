@@ -6,7 +6,7 @@
 //
 //Josh Roney (jpr87)
 
-`include "adder.v"
+//`include "adder.v"
 
 module ALU(
 	input [15:0] A,B,

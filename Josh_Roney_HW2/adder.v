@@ -313,7 +313,7 @@ assign cout = co;
 assign vout = vo;
 endmodule
 
-module Test_adder;
+/*module Test_adder;
 reg signed [15:0] A, B;
 reg [2:0] CODE;
 reg cin, coe;
@@ -356,4 +356,4 @@ A = 16'h8100;	B = 16'h8000;
 
 #5 $finish;
 end
-endmodule 
+endmodule*/ 
