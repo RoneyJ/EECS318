@@ -175,12 +175,12 @@ case(alu_code)
 	end
 	5'b10010://arithmetic left shift A by the amount B
 	begin
-		c = $signed(A) >>> B[3:0];
+		c = A << B[3:0];
 		over = 0;
 	end
 	5'b10011://arithmetic shift right A by the amount B
 	begin
-		c = $signed(A) >>> B[3:0];
+		c = {{15{A[15]}} , A[15:0]} >> B[3:0];
 		over = 0;
 	end
 	

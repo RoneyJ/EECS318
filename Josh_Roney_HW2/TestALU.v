@@ -84,7 +84,12 @@ module Test_ALU;
 	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
 
 	#3 //arithmetic shift right A
-	B = 16'h2a7b;	CODE = 5'b10011;
+	B = 16'h2a75;	CODE = 5'b10011;
+
+	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
+
+	#3 //arithmetic shift right A
+	A = 16'h2a75;
 
 	#2 $display("A=%h \t B=%h \t CODE=%b \t C=%h \t overflow=%b", A, B, CODE, C, overflow);
 

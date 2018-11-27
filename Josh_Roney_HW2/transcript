@@ -1,0 +1,43 @@
+# //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-36-generic
+# //
+# //  Copyright 1991-2010 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim Test_ALU 
+# Loading work.Test_ALU
+# Loading work.ALU
+# Loading work.adder
+add wave sim/:Test_ALU:*
+run
+# A=    0 	 B=    0 	 CODE=00000 	 C=    0 	 overflow=0
+# A=-31436 	 B= 30022 	 CODE=00000 	 C= -1414 	 overflow=0
+# A=34100 	 B=30022 	 CODE=00001 	 C=64122 	 overflow=0
+# A=-31436 	 B= 30022 	 CODE=00010 	 C=  4078 	 overflow=1
+# A=34100 	 B=30022 	 CODE=00011 	 C= 4078 	 overflow=0
+# A= 32767 	 CODE=00100 	 C=-32768 	 overflow=1
+# A=-32768 	 CODE=00101 	 C= 32767 	 overflow=1
+# A=5555 	 B=6666 	 CODE=01000 	 C=4444 	 overflow=0
+# A=5555 	 B=6666 	 CODE=01001 	 C=7777 	 overflow=0
+# A=5555 	 B=6666 	 CODE=01010 	 C=3333 	 overflow=0
+# A=5555 	 CODE=01100 	 C=aaaa 	 overflow=0
+# A=aaaa 	 B=2a74 	 CODE=10000 	 C=aaa0 	 overflow=0
+# A=aaaa 	 B=2a73 	 CODE=10001 	 C=1555 	 overflow=0
+# A=aaaa 	 B=2a78 	 CODE=10010 	 C=aa00 	 overflow=0
+# A=aaaa 	 B=2a75 	 CODE=10011 	 C=fd55 	 overflow=0
+# A=2a75 	 B=2a75 	 CODE=10011 	 C=0153 	 overflow=0
+# A=  1797 	 B=  1797 	 CODE=11000 	 C=    1 	 overflow=0
+# A=  1569 	 B=  1797 	 CODE=11001 	 C=    1 	 overflow=0
+# A= 29441 	 B=  1797 	 CODE=11010 	 C=    1 	 overflow=0
+# A=   444 	 B=  1797 	 CODE=11011 	 C=    0 	 overflow=0
+run
+# A=  1797 	 B=  1797 	 CODE=11100 	 C=    1 	 overflow=0
+# A=  1797 	 B=  1797 	 CODE=11101 	 C=    0 	 overflow=0
+# ** Note: $finish    : TestALU.v(128)
+#    Time: 112 fs  Iteration: 0  Instance: :Test_ALU
+# 1
+# Break in Module Test_ALU at TestALU.v line 128
