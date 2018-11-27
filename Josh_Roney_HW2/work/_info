@@ -4,7 +4,6 @@ K3
 cModel Technology
 Z0 d/home/jpr87/EECS318/Josh_Roney_HW2
 vadder
-!s100 5^30hfTlh<_EZQdmGaE<f2
 I?VO;CQDNNb[:lcR7VZk3b1
 VBG2[0KDF_Je1j>GGdJ24W1
 Z1 w1542751280
@@ -13,11 +12,11 @@ Z3 FALU.v
 L0 294
 Z4 OL;L;6.5f;42
 r1
-!s85 0
 31
 Z5 o-L mtiAvm -L mtiOvm -L mtiUPF
+!s100 5^30hfTlh<_EZQdmGaE<f2
+!s85 0
 vALU
-!s100 QQaehVB@Y?Fg@M0e7NO`o3
 I3UEi7?Sm_bZ]lZ7Rn:?<i3
 V]Hzo7^WokW6`_P7TE2<5=2
 R1
@@ -26,10 +25,11 @@ R3
 L0 9
 R4
 r1
-!s85 0
 31
 R5
 n@a@l@u
+!s100 QQaehVB@Y?Fg@M0e7NO`o3
+!s85 0
 vfreecellPlayer
 IMTSW?GZFIT6WhJoRX23Mj0
 V<B67JZ8DYBORmWN20T6NB1
@@ -59,6 +59,7 @@ R5
 !s100 1zbTbnzbDPcC7X:7L5Q_n1
 !s85 0
 vHandshake
+!s100 AM_I7RRNcIachDZAFfXd;3
 IGhKPVnobCbQFPHG[cjoj11
 VBo<0f6YPO;VYZY@czfSfl0
 Z11 w1542727640
@@ -67,11 +68,10 @@ R10
 L0 5
 R4
 r1
+!s85 0
 31
 R5
 n@handshake
-!s100 AM_I7RRNcIachDZAFfXd;3
-!s85 0
 vmux
 I35OcaJ73m]i`FX3e^6VcW3
 V[oS`Nhbm8A9IZj7D_l3Go2
@@ -129,6 +129,7 @@ ntest@free@cell
 !s100 <4]znd;S?=g[4mD6AIMe42
 !s85 0
 vtestHandshake
+!s100 @S;ca`EKX1]Tb@o]m98dE2
 IPog1]_?cC]z?O_<GhD^Pj1
 VEef>g4ziRolFPm2h;K?G^2
 R11
@@ -137,8 +138,7 @@ R10
 L0 95
 R4
 r1
+!s85 0
 31
 R5
 ntest@handshake
-!s100 @S;ca`EKX1]Tb@o]m98dE2
-!s85 0
