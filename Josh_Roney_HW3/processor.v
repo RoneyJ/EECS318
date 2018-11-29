@@ -119,7 +119,7 @@ begin
 		begin
 			
 		end
-	end
+	endcase
 	
 	else if(writeback)
 	begin
