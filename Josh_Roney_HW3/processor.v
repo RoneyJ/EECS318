@@ -60,7 +60,6 @@ begin
 	end
 	
 	else if(execute)	//execute instruction depending on opcode
-	begin
 	case(opcode)
 		4'b0000:	//No operation
 		begin
