@@ -39,9 +39,9 @@ begin
 	mem[0] = 3;
 	mem[1] = 4;
 	mem[2] = 32'b01010000000000000000000000000001;
-	mem[3] = 0;
-	mem[4] = 0;
-	mem[5] = 0;
+	mem[3] = 32'b01010000000000010000000000000001;
+	mem[4] = 32'b01010000000000010000000000000001;
+	mem[5] = 32'b01010000000000000000000000000000;
 	
 	#30 $finish;
 end
@@ -53,10 +53,10 @@ end
 
 always @(posedge clk)
 begin
-	$monitor("src_data = %d, dest_data = %d, instr = %h, clock = %b, PC = $d",src_data,dest_data,instr,clk,PC);
+	$monitor("mem[0] = %d, mem[1] = %d, instr = %h, PC = $d",mem[0],mem[1],instr,PC);
 	if(fetch)			//fetch instruction from memory
 	begin
-		$display("entered decode");
+		$display("entered fetch");
 		instr = mem[PC];
 		
 		fetch = 0;
