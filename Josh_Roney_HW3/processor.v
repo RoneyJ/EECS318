@@ -32,6 +32,9 @@ begin
 	writeback = 0;
 	PSR = 5'b00000;
 	PC = 2;//4;
+	instr = 0;
+	src_data = 0;
+	dest_data = 0;
 	
 	mem[0] = 3;
 	mem[1] = 4;
@@ -53,6 +56,7 @@ begin
 	$monitor("src_data = %d, dest_data = %d, instr = %h, clock = %b, PC = $d",src_data,dest_data,instr,clk,PC);
 	if(fetch)			//fetch instruction from memory
 	begin
+		$display("entered decode");
 		instr = mem[PC];
 		
 		fetch = 0;
