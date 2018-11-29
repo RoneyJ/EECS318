@@ -1,7 +1,7 @@
 //Processor module for HW3
 //Josh Roney (jpr87)
-module processor(clk);
-input clk;
+module processor;
+reg clk;
 
 reg fetch, decode, execute, writeback;	//assertions to determine which task to perform at clock
 
@@ -34,6 +34,13 @@ begin
 	mem[0] = 3;
 	mem[1] = 4;
 	mem[2] = 32'b01010000000000000000000000000001;
+	
+	#30 $finish
+end
+
+always @*
+begin
+	#1 clk = ~clk;
 end
 
 always @(posedge clk)
@@ -134,22 +141,4 @@ begin
 	end
 	
 end
-endmodule
-
-module test;
-	reg clock;
-	
-	processor p(clock);
-	
-	initial
-	begin
-		clock = 0;
-		
-		#30 $finish;
-	end
-	
-	always @*
-	begin
-		#1 clock = ~clock;
-	end
 endmodule
