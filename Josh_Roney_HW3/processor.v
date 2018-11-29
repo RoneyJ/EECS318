@@ -47,7 +47,7 @@ end
 
 always @(posedge clk)
 begin
-	$monitor("Mem[0] = %d \t Mem[1] = %d \t Mem[2] = %h \t clock = %b \t PC = $d",mem[0],mem[1],mem[2],clk,PC);
+	$monitor("src_data = %d, dest_data = %d, instr = %h, clock = %b, PC = $d",src_data,dest_data,instr,clk,PC);
 	if(fetch)			//fetch instruction from memory
 	begin
 		instr = mem[PC];
