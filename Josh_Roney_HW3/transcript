@@ -1,0 +1,17 @@
+# vsim -c processor 
+# //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-36-generic
+# //
+# //  Copyright 1991-2010 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading work.processor
+# Mem[0] =          x 	 Mem[1] =          x 	 Mem[2] = xxxxxxxx
+# Mem[0] =          3 	 Mem[1] =          4 	 Mem[2] = 50000001
+# Mem[0] =          3 	 Mem[1] =          4 	 Mem[2] = 50000001
+# ** Note: $finish    : processor.v(42)
+#    Time: 15 fs  Iteration: 0  Instance: :processor

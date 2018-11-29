@@ -23,7 +23,7 @@ reg [31:0] regfile;	//Register File
 
 initial
 begin
-	$monitor("Mem[0] = %d \t Mem[1] = %d \t Mem[2] = %h",mem[0],mem[1],mem[2]);
+	$display("Mem[0] = %d \t Mem[1] = %d \t Mem[2] = %h",mem[0],mem[1],mem[2]);
 	fetch = 1;
 	decode = 0;
 	execute = 0;
@@ -34,6 +34,12 @@ begin
 	mem[0] = 3;
 	mem[1] = 4;
 	mem[2] = 32'b01010000000000000000000000000001;
+
+	$display("Mem[0] = %d \t Mem[1] = %d \t Mem[2] = %h",mem[0],mem[1],mem[2]);
+
+	#5 $display("Mem[0] = %d \t Mem[1] = %d \t Mem[2] = %h",mem[0],mem[1],mem[2]);
+
+	#10 $finish;
 end
 
 always @(posedge clk)
