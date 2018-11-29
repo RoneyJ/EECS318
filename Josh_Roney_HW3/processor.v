@@ -43,7 +43,7 @@ begin
 	mem[4] = 32'h50001000;
 	mem[5] = 32'h50000000;
 	
-	#30 $finish;
+	#50 $finish;
 end
 
 always
