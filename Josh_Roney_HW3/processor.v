@@ -21,7 +21,7 @@ reg [31:0] mem [0:5];	//memory used by processor, first X registers are data
 
 reg [31:0] regfile;	//Register File
 
-$monitor("Mem[0] = %d \t Mem[1] = %d \t Mem[2] = %h \t clock = %b \t PC = $d",mem[0],mem[1],mem[2],clk,PC);
+
 
 initial
 begin
@@ -47,6 +47,7 @@ end
 
 always @(posedge clk)
 begin
+	$monitor("Mem[0] = %d \t Mem[1] = %d \t Mem[2] = %h \t clock = %b \t PC = $d",mem[0],mem[1],mem[2],clk,PC);
 	if(fetch)			//fetch instruction from memory
 	begin
 		instr = mem[PC];
