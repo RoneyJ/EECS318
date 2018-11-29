@@ -40,7 +40,6 @@ always @(posedge clk)
 begin
 	if(fetch)			//fetch instruction from memory
 	begin
-		v
 		instr = mem[PC];
 		
 		fetch = 0;
