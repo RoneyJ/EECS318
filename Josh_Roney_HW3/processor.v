@@ -24,6 +24,7 @@ reg [31:0] regfile;	//Register File
 initial
 begin
 	$monitor("Mem[0] = %d \t Mem[1] = %d \t Mem[2] = %h \t clock = %b",mem[0],mem[1],mem[2],clk);
+	clk = 0;
 	fetch = 1;
 	decode = 0;
 	execute = 0;
