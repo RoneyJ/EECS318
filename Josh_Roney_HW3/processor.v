@@ -36,8 +36,11 @@ begin
 	mem[0] = 3;
 	mem[1] = 4;
 	mem[2] = 32'b01010000000000000000000000000001;
+	mem[3] = 0;
+	mem[4] = 0;
+	mem[5] = 0;
 	
-	//#30 $finish;
+	#30 $finish;
 end
 
 always
