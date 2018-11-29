@@ -35,7 +35,7 @@ begin
 	mem[1] = 4;
 	mem[2] = 32'b01010000000000000000000000000001;
 	
-	#30 $finish
+	#30 $finish;
 end
 
 always @*
