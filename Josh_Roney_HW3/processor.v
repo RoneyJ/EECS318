@@ -40,7 +40,7 @@ begin
 	//#30 $finish;
 end
 
-always @*
+always
 begin
 	#1 clk = ~clk;
 end
