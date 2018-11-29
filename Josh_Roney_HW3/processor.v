@@ -119,9 +119,6 @@ begin
 		begin
 			
 		end
-	
-	execute = 0;
-	writeback = 1;
 	end
 	
 	else if(writeback)
