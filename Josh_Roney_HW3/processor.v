@@ -5,18 +5,18 @@ reg clk;
 
 reg fetch, decode, execute, writeback;	//assertions to determine which task to perform at clock
 
-reg [3:0] opcode;				//opcode
-reg [3:0] cc;					//condition code
+reg [3:0] opcode;		//opcode
+reg [3:0] cc;			//condition code
 reg src_type,dest_type;		//source/destination type
-reg [11:0] src_addr;			//source address or shift/rotate amount
+reg [11:0] src_addr;		//source address or shift/rotate amount
 reg [11:0] dest_addr;		//destination address
 
-integer PC;						//program counter
-reg [31:0] instr;				//instruction storage
-reg [31:0] src_data;			//data stored at source address
+integer PC;			//program counter
+reg [31:0] instr;		//instruction storage
+reg [31:0] src_data;		//data stored at source address
 reg [31:0] dest_data;		//data stored at destination address
 
-reg [4:0] PSR;					//Program Status Register
+reg [4:0] PSR;			//Program Status Register
 reg [31:0] mem [0:5];		//memory used by processor, first X registers are data
 
 reg [31:0] regfile [0:15];	//Register File
@@ -85,16 +85,15 @@ begin
 		begin
 			PC = PC + 1;
 		
-			fetch = 1;
 			execute = 0;
+			fetch = 1;
 		end
 	
 		4'b0001:	//Load
 		begin
 			PSR[0] = 0;
 			
-			src_data = mem[src_addr];
-			regfile[dest_addr] = src_data;
+			regfile[dest_addr] = mem[src_addr];
 			
 			PC = PC + 1;
 			execute = 0;
@@ -105,8 +104,7 @@ begin
 		begin
 			PSR = 5'b00000;
 			
-			src_data = regfile[src_addr];
-			dest_data = src_data;
+			dest_data = regfile[src_addr];
 			
 			PC = PC + 1;
 			execute = 0;
@@ -115,18 +113,116 @@ begin
 	
 		4'b0011:	//Branch
 		begin
+			case(cc)
+				4'b0000:	//always
+				begin
+				PC = dest_addr;
+				execute = 0;
+				fetch = 1;
+				end
+
+				4'b0001:	//parity
+				begin
+				if(PSR[1])
+					PC = dest_addr;
+				else
+					PC = PC + 1;
+
+				execute = 0;
+				fetch = 1;
+				end
+
+				4'b0010:	//even
+				begin
+				if(PSR[2])
+					PC = dest_addr;
+				else
+					PC = PC + 1;
+
+				execute = 0;
+				fetch = 1;
+				end
+
+				4'b0011:	//carry
+				begin
+				if(PSR[0])
+					PC = dest_addr;
+				else
+					PC = PC + 1;
+
+				execute = 0;
+				fetch = 1;
+				end
+
+				4'b0100:	//negative
+				begin
+				if(PSR[3])
+					PC = dest_addr;
+				else
+					PC = PC + 1;
+
+				execute = 0;
+				fetch = 1;
+				end
+
+				4'b0101:	//zero
+				begin
+				if(PSR[4])
+					PC = dest_addr;
+				else
+					PC = PC + 1;
+
+				execute = 0;
+				fetch = 1;
+				end
+
+				4'b0110:	//no carry
+				begin
+				if(PSR[0])
+					PC = PC + 1;
+				else
+					PC = dest_addr;
+
+				execute = 0;
+				fetch = 1;
+				end
+
+				4'b0111:	//positive
+				begin
+				if(PSR[3])
+					PC = PC + 1;
+				else
+					PC = dest_addr;
+
+				execute = 0;
+				fetch = 1;
+				end
+			endcase
 		end
 	
 		4'b0100:	//XOR
 		begin
+			//set PSR
+			regfile[dest_addr] = regfile[dest_addr] ^ regfile[src_addr];
+
+			
+			PSR[0] = 0;
+			PSR[2] = regfile[dest_addr][0];
+			PSR[3] = regfile[dest_addr][31];
+			if(regfile[dest_addr] == 32'h00000000)
+				PSR[4] = 1;
+			else
+				PSR[4] = 0;
+
+			PC = PC + 1;
+			execute = 0;
+			fetch = 1;
 		end
 	
 		4'b0101:	//ADD
 		begin
 			//set PSR
-			src_data = mem[src_addr];
-		
-			regfile[dest_addr] = regfile[dest_addr] + src_data;
+			regfile[dest_addr] = regfile[dest_addr] + regfile[src_addr];
 		
 			PC = PC + 1;
 			execute = 0;
@@ -135,10 +231,20 @@ begin
 	
 		4'b0110:	//Rotate
 		begin
+			//set PSR
 		end
 	
 		4'b0111:	//Shift
 		begin
+			//set PSR
+			if(src_addr[11])
+				regfile[dest_addr] = $signed(regfile[dest_addr]) <<< src_addr[10:0];
+			else
+				regfile[dest_addr] = $signed(regfile[dest_addr]) >>> src_addr[10:0];
+
+			PC = PC + 1;
+			execute = 0;
+			fetch = 1;
 		end
 	
 		4'b1000:	//Halt
@@ -151,12 +257,13 @@ begin
 		
 		4'b1001:	//Complement
 		begin
+			//set PSR
 			PSR[0] = 0;
-			dest_data = ~mem[src_addr];
+			regfile[dest_addr] = ~regfile[src_addr];
 			
 			PC = PC + 1;
 			execute = 0;
-			writeback = 1;
+			fetch = 1;
 		end
 	endcase
 	end
