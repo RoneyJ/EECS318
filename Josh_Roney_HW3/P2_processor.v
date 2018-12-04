@@ -252,6 +252,7 @@ end
 
 always @(posedge clk)
 begin
+	$monitor("mem[0] = %h, mem[1] = %h, reg[0] = %h, reg[1] = %h, reg[2] = %h, reg[3] = %h",mem[0],mem[1],regfile[0],regfile[1],regfile[2],regfile[3]);
 	if(fetch)	//fetch instruction from memory
 	begin
 		instr = mem[PC];
