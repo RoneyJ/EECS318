@@ -94,7 +94,7 @@ begin
 	mem[10] = 32'h70001000;	//shift regfile[0] right
 	mem[11] = 32'h30000004;	//redo loop
 	
-	mem[12] = 32'h20000001;	//store regfile[0] in mem[1]
+	mem[12] = 32'h20001001;	//store regfile[1] in mem[1]
 	mem[13] = 32'h80000000;	//halt
 	//1
 	/*mem[6] = 32'h32000005;	//branch if even
