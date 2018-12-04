@@ -142,7 +142,6 @@ always @(posedge clk)
 begin
 	if(fetch)	//fetch instruction from memory
 	begin
-		$display("entered fetch");
 		instr = mem[PC];
 		
 		fetch = 0;
@@ -151,7 +150,6 @@ begin
 	
 	else if(decode)	//decode instruction
 	begin
-		$display("entered decode");
 		opcode = instr[31:28];
 		cc = instr[27:24];
 		src_type = instr[27];
@@ -165,7 +163,6 @@ begin
 	
 	else if(execute)//execute instruction depending on opcode
 	begin
-	$display("entered execute");
 	case(opcode)
 		4'b0000://No operation
 		begin
@@ -372,7 +369,6 @@ begin
 	
 	else if(writeback)
 	begin
-		$display("entered writeback");
 		mem[dest_addr] = data;
 	
 		writeback = 0;
