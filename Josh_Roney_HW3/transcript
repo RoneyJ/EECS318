@@ -1,5 +1,4 @@
-# vsim -c P2_processor 
-# //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-39-generic
+# //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-36-generic
 # //
 # //  Copyright 1991-2010 Mentor Graphics Corporation
 # //              All Rights Reserved.
@@ -9,7 +8,31 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# Loading work.P2_processor
-# mem[0] = 00000000000000000000000000000110 , mem[1] =          0
-# ** Note: $finish    : P2_processor.v(229)
-#    Time: 80 fs  Iteration: 0  Instance: :P2_processor
+# vsim P1_processor 
+# Loading work.P1_processor
+add wave \
+{sim/:P1_processor:clk } \
+{sim/:P1_processor:fetch } \
+{sim/:P1_processor:decode } \
+{sim/:P1_processor:execute } \
+{sim/:P1_processor:writeback } \
+{sim/:P1_processor:opcode } \
+{sim/:P1_processor:cc } \
+{sim/:P1_processor:src_type } \
+{sim/:P1_processor:dest_type } \
+{sim/:P1_processor:src_addr } \
+{sim/:P1_processor:dest_addr } \
+{sim/:P1_processor:PC } \
+{sim/:P1_processor:i } \
+{sim/:P1_processor:j } \
+{sim/:P1_processor:instr } \
+{sim/:P1_processor:data } \
+{sim/:P1_processor:PSR } \
+{sim/:P1_processor:mem } \
+{sim/:P1_processor:regfile } \
+{sim/:P1_processor:sum } 
+run -all
+# ** Note: $finish    : P1_processor.v(333)
+#    Time: 31 fs  Iteration: 1  Instance: :P1_processor
+# 1
+# Break in Module P1_processor at P1_processor.v line 333

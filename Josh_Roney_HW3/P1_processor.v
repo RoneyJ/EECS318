@@ -22,6 +22,7 @@ reg [4:0] PSR;			//Program Status Register
 reg [31:0] mem [0:6];		//memory used by processor, first 2 registers hold data
 
 reg [31:0] regfile [0:15];	//Register File of 16 32-bit registers
+reg [32:0] sum;			//sum register for addition
 
 function parity;
 input [31:0] r;
@@ -96,7 +97,7 @@ begin
 	regfile[13] = 0;
 	regfile[14] = 0;
 	regfile[15] = 0;
-	
+
 	mem[0] = 6;
 	mem[1] = 0;
 	mem[2] = 32'h10000000;	//load mem[0] into regfile[0]
@@ -104,8 +105,6 @@ begin
 	mem[4] = 32'h58001000;	//add 1 to regfile[0]
 	mem[5] = 32'h20000001;	//store regfile[0] into mem[1]
 	mem[6] = 32'h80000000;	//halt
-
-	#50 $finish;
 end
 
 always
@@ -155,7 +154,6 @@ begin
 				regfile[dest_addr] = mem[src_addr];
 			
 			PSR = psr(regfile[dest_addr]);
-			PSR[0] = 0;
 			
 			PC = PC + 1;
 			execute = 0;
@@ -274,7 +272,6 @@ begin
 
 			
 			PSR = psr(regfile[dest_addr]);
-			PSR[0] = 0;
 
 			PC = PC + 1;
 			execute = 0;
@@ -283,13 +280,14 @@ begin
 	
 		4'b0101:	//ADD
 		begin
-			//set PSR
 			if(src_type)
-				regfile[dest_addr] = regfile[dest_addr] + src_addr;
+				sum = regfile[dest_addr] + src_addr;
 			else
-				regfile[dest_addr] = regfile[dest_addr] + regfile[src_addr];
+				sum = regfile[dest_addr] + regfile[src_addr];
 
+			regfile[dest_addr] = sum[31:0];
 			PSR = psr(regfile[dest_addr]);
+			PSR[0] = sum[32];
 		
 			PC = PC + 1;
 			execute = 0;
@@ -298,7 +296,6 @@ begin
 	
 		4'b0110:	//Rotate
 		begin
-			//set PSR
 			regfile[dest_addr] = rotate(regfile[dest_addr],regfile[src_addr]);
 
 			PSR = psr(regfile[dest_addr]);
@@ -310,7 +307,6 @@ begin
 	
 		4'b0111:	//Shift
 		begin
-			//set PSR
 			if(src_addr[11])
 				regfile[dest_addr] = $signed(regfile[dest_addr]) <<< src_addr[10:0];
 			else
@@ -324,20 +320,15 @@ begin
 		end
 	
 		4'b1000:	//Halt
-		begin	//ask how halt should operate
-			execute = 0;
-			fetch = 0;
+		begin
+			$finish;
 		end
 		
 		4'b1001:	//Complement
 		begin
-			//set PSR
-			PSR[0] = 0;
 			regfile[dest_addr] = ~regfile[src_addr];
 
 			PSR = psr(regfile[dest_addr]);
-
-			PSR[0] = 0;
 			
 			PC = PC + 1;
 			execute = 0;

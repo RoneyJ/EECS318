@@ -22,6 +22,7 @@ reg [4:0] PSR;			//Program Status Register
 reg [31:0] mem [0:22];		//memory used by processor, first 2 registers hold data
 
 reg [31:0] regfile [0:15];	//Register File of 16 32-bit registers
+reg [32:0] sum;			//sum register for addition
 
 function parity;
 input [31:0] r;
@@ -180,7 +181,6 @@ begin
 				regfile[dest_addr] = mem[src_addr];
 			
 			PSR = psr(regfile[dest_addr]);
-			PSR[0] = 0;
 			
 			PC = PC + 1;
 			execute = 0;
@@ -298,7 +298,6 @@ begin
 
 			
 			PSR = psr(regfile[dest_addr]);
-			PSR[0] = 0;
 
 			PC = PC + 1;
 			execute = 0;
@@ -308,11 +307,13 @@ begin
 		4'b0101:	//ADD
 		begin
 			if(src_type)
-				regfile[dest_addr] = regfile[dest_addr] + src_addr;
+				sum = regfile[dest_addr] + src_addr;
 			else
-				regfile[dest_addr] = regfile[dest_addr] + regfile[src_addr];
+				sum = regfile[dest_addr] + regfile[src_addr];
 
+			regfile[dest_addr] = sum[31:0];
 			PSR = psr(regfile[dest_addr]);
+			PSR[0] = sum[32];
 		
 			PC = PC + 1;
 			execute = 0;
@@ -345,20 +346,15 @@ begin
 		end
 	
 		4'b1000:	//Halt
-		begin	//ask how halt should operate
-			execute = 0;
-			fetch = 0;
+		begin
+			$finish;
 		end
 		
 		4'b1001:	//Complement
 		begin
-			//set PSR
-			PSR[0] = 0;
 			regfile[dest_addr] = ~regfile[src_addr];
 
 			PSR = psr(regfile[dest_addr]);
-
-			PSR[0] = 0;
 			
 			PC = PC + 1;
 			execute = 0;
