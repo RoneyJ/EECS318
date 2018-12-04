@@ -102,44 +102,39 @@ begin
 	mem[1] = 4'b0110;	//6
 	mem[2] = 0;		//product
 	
-	mem[3] = 32'h10000001;	//load mem[0] into regfile[1]
-	//mem[5] = 32'h34000009;	//branch if negative
-	mem[4] = 32'h10001002;	//load mem[1] into regfile[2]
-	//mem[7] = 32'h3400000x;	//branch if negative
-	//mem[8] - 32'h3000000x;	//branch to multiplication, both were pos
+	mem[4] = 32'h10000001;	//load mem[0] into regfile[1]
+	mem[5] = 32'h34000008;	//branch if negative
+	mem[6] = 32'h10001002;	//load mem[1] into regfile[2]
+	mem[7] = 32'h3400000x;	//branch if negative
 
 	//mem[0] was negative
-	//mem[9] = 32'h10001002;	//load mem[1] into regfile[2]
-	//mem[10] = 32'h3400000x;	//branch if negative
-	
-	//only mem[1] was negative
-	
-	//mem[0] and mem[1] were both negative
-	//mem[] = 32'h90001001;
+	mem[8] = 32'h10001002;	//load mem[1] into regfile[2]
+	mem[9] = 32'h3400000x;	//branch if negative
+	//**Fill out all scenarios**
 
-	//multiply
-	mem[5] = 32'h32000007;	//branch if even
-	mem[6] = 32'h50001000;	//add regfile[1] to regfile[0]
-	mem[7] = 32'h70801001;	//shift regfile[1] left
-	mem[8] = 32'h70001002;	//shift regfile[2] right
+	//for 2 positive numbers
+	mem[] = 32'h32000007;	//branch if even
+	mem[] = 32'h50001000;	//add regfile[1] to regfile[0]
+	mem[] = 32'h70801001;	//shift regfile[1] left
+	mem[] = 32'h70001002;	//shift regfile[2] right
 
-	mem[9] = 32'h3200000b;	//branch is even
-	mem[10] = 32'h50001000;	//add regfile[1] to regfile[0]
-	mem[11] = 32'h70801001;	//shift regfile[1] left
-	mem[12] = 32'h70001002;	//shift regfile[2] right
+	mem[] = 32'h3200000b;	//branch is even
+	mem[] = 32'h50001000;	//add regfile[1] to regfile[0]
+	mem[] = 32'h70801001;	//shift regfile[1] left
+	mem[] = 32'h70001002;	//shift regfile[2] right
 
-	mem[13] = 32'h3200000f;	//branch is even
-	mem[14] = 32'h50001000;	//add regfile[1] to regfile[0]
-	mem[15] = 32'h70801001;	//shift regfile[1] left
-	mem[16] = 32'h70001002;	//shift regfile[2] right
+	mem[] = 32'h3200000f;	//branch is even
+	mem[] = 32'h50001000;	//add regfile[1] to regfile[0]
+	mem[] = 32'h70801001;	//shift regfile[1] left
+	mem[] = 32'h70001002;	//shift regfile[2] right
 
-	mem[17] = 32'h32000013;	//branch is even
-	mem[18] = 32'h50001000;	//add regfile[1] to regfile[0]
-	mem[19] = 32'h70801001;	//shift regfile[1] left
-	mem[20] = 32'h70001002;	//shift regfile[2] right
+	mem[] = 32'h32000013;	//branch is even
+	mem[] = 32'h50001000;	//add regfile[1] to regfile[0]
+	mem[] = 32'h70801001;	//shift regfile[1] left
+	mem[] = 32'h70001002;	//shift regfile[2] right
 
-	mem[21] = 32'h20000002;	//store regfile[0] in mem[2]
-	mem[22] = 32'h80000000;	//halt
+	mem[] = 32'h20000002;	//store regfile[0] in mem[2]
+	mem[] = 32'h80000000;	//halt
 
 	#125 $finish;
 end
