@@ -19,7 +19,7 @@ reg [31:0] instr;		//instruction storage
 reg [31:0] data;		//data to be written into memory 
 
 reg [4:0] PSR;			//Program Status Register
-reg [31:0] mem [0:6];		//memory used by processor, first 2 registers hold data
+reg [31:0] mem [0:13];		//memory used by processor, first 2 registers hold data
 
 reg [31:0] regfile [0:15];	//Register File of 16 32-bit registers
 
@@ -79,7 +79,7 @@ begin
 	PC = 2;
 	instr = 0;
 	data = 0;
-	//isntructions to count number of 1's in mem[0]
+	//instructions to count number of 1's in mem[0]
 	mem[0] = 6;
 	mem[1] = 0;
 	
@@ -225,7 +225,8 @@ begin
 	mem[100] = 32'h80000000;//halt*/
 	
 
-	#200 $finish;
+	#80 $display("mem[0] = %b , mem[1] = %d", mem[0], mem[1]);
+	$finish;
 end
 
 always
@@ -235,11 +236,8 @@ end
 
 always @(posedge clk)
 begin
-	//$monitor("mem[0] = %d, mem[1] = %d, instr = %h, PC = $d",mem[0],mem[1],instr,PC);
-	$monitor("PSR = %b, rg = %h", PSR, regfile[dest_addr]);
 	if(fetch)	//fetch instruction from memory
 	begin
-		$display("entered fetch");
 		instr = mem[PC];
 		
 		fetch = 0;
@@ -248,7 +246,6 @@ begin
 	
 	else if(decode)	//decode instruction
 	begin
-		$display("entered decode");
 		opcode = instr[31:28];
 		cc = instr[27:24];
 		src_type = instr[27];
@@ -262,7 +259,6 @@ begin
 	
 	else if(execute)//execute instruction depending on opcode
 	begin
-	$display("entered execute");
 	case(opcode)
 		4'b0000://No operation
 		begin
@@ -473,7 +469,6 @@ begin
 	
 	else if(writeback)
 	begin
-		$display("entered writeback");
 		mem[dest_addr] = data;
 	
 		writeback = 0;

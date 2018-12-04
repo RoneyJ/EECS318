@@ -103,19 +103,7 @@ begin
 	mem[2] = 0;		//product
 	
 	mem[3] = 32'h10000001;	//load mem[0] into regfile[1]
-	//mem[5] = 32'h34000009;	//branch if negative
 	mem[4] = 32'h10001002;	//load mem[1] into regfile[2]
-	//mem[7] = 32'h3400000x;	//branch if negative
-	//mem[8] - 32'h3000000x;	//branch to multiplication, both were pos
-
-	//mem[0] was negative
-	//mem[9] = 32'h10001002;	//load mem[1] into regfile[2]
-	//mem[10] = 32'h3400000x;	//branch if negative
-	
-	//only mem[1] was negative
-	
-	//mem[0] and mem[1] were both negative
-	//mem[] = 32'h90001001;
 
 	//multiply
 	mem[5] = 32'h32000007;	//branch if even
@@ -141,7 +129,8 @@ begin
 	mem[21] = 32'h20000002;	//store regfile[0] in mem[2]
 	mem[22] = 32'h80000000;	//halt
 
-	#125 $finish;
+	#125 $display("mem[0] = %h, mem[1] = %h, mem[2] = %h",mem[0], mem[1], mem[2]); 
+	$finish;
 end
 
 always
@@ -151,8 +140,6 @@ end
 
 always @(posedge clk)
 begin
-	//$monitor("mem[0] = %d, mem[1] = %d, instr = %h, PC = $d",mem[0],mem[1],instr,PC);
-	$monitor("PSR = %b, rg = %h", PSR, regfile[dest_addr]);
 	if(fetch)	//fetch instruction from memory
 	begin
 		$display("entered fetch");

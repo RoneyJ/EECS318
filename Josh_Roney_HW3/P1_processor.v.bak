@@ -98,8 +98,11 @@ end
 
 always @(posedge clk)
 begin
+	//$monitor("mem[0] = %d, mem[1] = %d, instr = %h, PC = $d",mem[0],mem[1],instr,PC);
+	$monitor("PSR = %b, rg = %h", PSR, regfile[dest_addr]);
 	if(fetch)	//fetch instruction from memory
 	begin
+		$display("entered fetch");
 		instr = mem[PC];
 		
 		fetch = 0;
@@ -108,6 +111,7 @@ begin
 	
 	else if(decode)	//decode instruction
 	begin
+		$display("entered decode");
 		opcode = instr[31:28];
 		cc = instr[27:24];
 		src_type = instr[27];
@@ -121,6 +125,7 @@ begin
 	
 	else if(execute)//execute instruction depending on opcode
 	begin
+	$display("entered execute");
 	case(opcode)
 		4'b0000://No operation
 		begin
@@ -331,6 +336,7 @@ begin
 	
 	else if(writeback)
 	begin
+		$display("entered writeback");
 		mem[dest_addr] = data;
 	
 		writeback = 0;
