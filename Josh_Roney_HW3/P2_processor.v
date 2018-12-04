@@ -225,8 +225,7 @@ begin
 	mem[100] = 32'h80000000;//halt*/
 	
 
-	#80 $display("mem[0] = %b , mem[1] = %d", mem[0], mem[1]);
-	$finish;
+	#80 $finish;
 end
 
 always

@@ -3,30 +3,58 @@ K3
 13
 cModel Technology
 Z0 d/home/jpr87/EECS318/Josh_Roney_HW3
-vP3_processor
-!s100 P7UQ33:93aiU2I]TZGZ<k1
-IYa?0X[TV10hRzR[n?S1AD3
-V9ZE>gWVfR2MHlK9zYJ@j=3
-w1543882896
-Z1 8P3_processor.v
-Z2 FP3_processor.v
+vP1_processor
+I:Z8oZO?hCffW1SN5B_m7b1
+V:Z?mYenH51c7Id<T`<?;W2
+w1543935946
+8P1_processor.v
+FP1_processor.v
 L0 5
-Z3 OL;L;6.5f;42
+Z1 OL;L;6.5f;42
+r1
+31
+Z2 o-L mtiAvm -L mtiOvm -L mtiUPF
+n@p1_processor
+!s100 8I`5cXnYkM1lcA4A8RlQH3
+!s85 0
+vP2_processor
+!s100 LGPOodjK;Xf5z8amEhblL0
+I`P=:FPXzG5F_IeDoR_h7M2
+VcidHjOb[LZz8Q<a]e?f713
+w1543936238
+8P2_processor.v
+FP2_processor.v
+L0 5
+R1
 r1
 !s85 0
 31
-Z4 o-L mtiAvm -L mtiOvm -L mtiUPF
+R2
+n@p2_processor
+vP3_processor
+IRcO6f>1]SFAAEMk;XZVP;1
+V9ZE>gWVfR2MHlK9zYJ@j=3
+w1543936096
+Z3 8P3_processor.v
+Z4 FP3_processor.v
+L0 5
+R1
+r1
+31
+R2
 n@p3_processor
+!s100 am?W7a0SN2_EaA?jz;YJ43
+!s85 0
 vprocessor
 I5NdmUG9`X[>a=gkdYgG3D2
 V>WLhl7e>YIlS2Q2P1gCUR1
 w1543880362
-R1
-R2
-L0 5
 R3
+R4
+L0 5
+R1
 r1
 31
-R4
+R2
 !s100 gheV4T@`>K:7SF49nWPI]1
 !s85 0
