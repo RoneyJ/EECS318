@@ -97,8 +97,6 @@ begin
 	regfile[14] = 0;
 	regfile[15] = 0;
 	
-	$monitor("mem[0] = %h, mem[1] = %h, reg[0] = %h, reg[1] = %h, reg[2] = %h, reg[3] = %h",mem[0],mem[1],regfile[0],regfile[1],regfile[2],regfile[3]);
-	
 	//instructions to count number of 1's in mem[0]
 	mem[0] = 6;
 	mem[1] = 0;
@@ -244,8 +242,7 @@ begin
 	mem[99] = 32'h20001001;	//store regfile[1] in mem[0]
 	mem[100] = 32'h80000000;//halt*/
 	
-
-	#80 $finish;
+	%500 $finish;
 end
 
 always
