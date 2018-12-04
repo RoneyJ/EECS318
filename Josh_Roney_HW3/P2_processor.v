@@ -242,7 +242,7 @@ begin
 	mem[99] = 32'h20001001;	//store regfile[1] in mem[0]
 	mem[100] = 32'h80000000;//halt*/
 	
-	%500 $finish;
+	#500 $finish;
 end
 
 always
