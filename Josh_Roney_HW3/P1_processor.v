@@ -80,6 +80,23 @@ begin
 	instr = 0;
 	data = 0;
 	
+	regfile[0] = 0;
+	regfile[1] = 0;
+	regfile[2] = 0;
+	regfile[3] = 0;
+	regfile[4] = 0;
+	regfile[5] = 0;
+	regfile[6] = 0;
+	regfile[7] = 0;
+	regfile[8] = 0;
+	regfile[9] = 0;
+	regfile[10] = 0;
+	regfile[11] = 0;
+	regfile[12] = 0;
+	regfile[13] = 0;
+	regfile[14] = 0;
+	regfile[15] = 0;
+	
 	mem[0] = 6;
 	mem[1] = 0;
 	mem[2] = 32'h10000000;	//load mem[0] into regfile[0]

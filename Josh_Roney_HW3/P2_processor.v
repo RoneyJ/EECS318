@@ -79,6 +79,26 @@ begin
 	PC = 2;
 	instr = 0;
 	data = 0;
+	
+	regfile[0] = 0;
+	regfile[1] = 0;
+	regfile[2] = 0;
+	regfile[3] = 0;
+	regfile[4] = 0;
+	regfile[5] = 0;
+	regfile[6] = 0;
+	regfile[7] = 0;
+	regfile[8] = 0;
+	regfile[9] = 0;
+	regfile[10] = 0;
+	regfile[11] = 0;
+	regfile[12] = 0;
+	regfile[13] = 0;
+	regfile[14] = 0;
+	regfile[15] = 0;
+	
+	$monitor("mem[0] = %h, mem[1] = %h, reg[0] = %h, reg[1] = %h, reg[2] = %h, reg[3] = %h",mem[0],mem[1],regfile[0],regfile[1],regfile[2],regfile[3]);
+	
 	//instructions to count number of 1's in mem[0]
 	mem[0] = 6;
 	mem[1] = 0;
