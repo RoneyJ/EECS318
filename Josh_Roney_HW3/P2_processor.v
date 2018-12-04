@@ -103,7 +103,7 @@ begin
 	
 	mem[3] = 32'h10000000;	//load mem[0] into regfile[0]
 	//0
-	mem[4] = 32'h32000005;	//branch if even
+	mem[4] = 32'h32000006;	//branch if even
 	mem[5] = 32'h58001001;	//add 1 to regfile[1]
 	mem[6] = 32'h70001002;	//add 1 to regfile[2]
 	mem[7] = 32'h18020003;	//load 32 into regfile[3]
@@ -252,7 +252,6 @@ end
 
 always @(posedge clk)
 begin
-	$monitor("mem[0] = %h, mem[1] = %h, reg[0] = %h, reg[1] = %h, reg[2] = %h, reg[3] = %h",mem[0],mem[1],regfile[0],regfile[1],regfile[2],regfile[3]);
 	if(fetch)	//fetch instruction from memory
 	begin
 		instr = mem[PC];
