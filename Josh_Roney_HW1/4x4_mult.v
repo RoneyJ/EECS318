@@ -55,6 +55,7 @@ module Test_4x4;
 	
 	initial
 	begin
+	$monitor("A = %b \t B = %b \t Product = %b",A,B,P);
 	A = 4'b0010;	B = 4'b0100;
 
 	#20

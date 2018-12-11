@@ -1,4 +1,3 @@
-# vsim -c Test_4x4 
 # //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-36-generic
 # //
 # //  Copyright 1991-2010 Mentor Graphics Corporation
@@ -9,8 +8,13 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# Loading work.Test_4x4
-# Loading work.Mult_4x4
-# Loading work.FA
-# A = 0010 	 B = 0100 	 Product = 00001000
-# A = 1111 	 B = 0011 	 Product = 00101101
+# vsim testp5s 
+# Loading std.standard
+# Loading work.testp5s(test)
+# Loading work.structuralfsm(fsm)
+# Loading work.dff(basic)
+add wave sim/:testp5s:fsm:*
+run
+# ** Failure: simulation finished successfully
+#    Time: 72 fs  Iteration: 0  Process: :testp5s:line__58 File: P5_structural.vhdl
+# Break in Process line__58 at P5_structural.vhdl line 83
