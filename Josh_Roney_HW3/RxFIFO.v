@@ -2,6 +2,7 @@
 //Josh Roney (jpr87)
 module RxFIFO(
 	input psel, pwrite, clear_b, pclk,
+	input rcv,
 	input [7:0] rxdata,
 	output ssprxintr,
 	output [7:0] prdata
@@ -21,7 +22,7 @@ module RxFIFO(
 	
 	always @(posedge pclk or clear_b)
 	begin
-		if(clear_b)
+		if(~clear_b)
 		begin
 			storage = {8'h00, 8'h00, 8'h00, 8'h00};
 			intr = 0;
@@ -30,7 +31,7 @@ module RxFIFO(
 		
 		else
 		begin
-			if(~intr)	//accept an input
+			if(~intr && rcv)	//accept an input
 			begin
 				storage[place] = rxdata;
 				place = place + 1;

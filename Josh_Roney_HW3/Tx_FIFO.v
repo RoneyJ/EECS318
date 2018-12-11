@@ -4,12 +4,12 @@ module TxFIFo(
 	input psel, pwrite, clear_b, pclk,
 	input remove,					//signal from transmit logic to indicate when to output next data in storage
 	input [7:0] pwdata,
-	output ssptxintr,
+	output ssptxintr, tmit,
 	output [7:0] txdata
 	);
 	
 	reg [7:0] storage [0:3];	//4 8-bit registers for storage in the FIFO
-	reg	intr;						//intr signal
+	reg	intr, tmit;						//interrupt signal and transmit signal for transmit logic
 	integer place;					//placeholder integer to mark location of free space (if place = 4, FIFO is full)
 	
 	
@@ -22,7 +22,7 @@ module TxFIFo(
 	
 	always @(posedge pclk or clear_b)
 	begin
-		if(clear_b)
+		if(~clear_b)
 		begin
 			storage = {8'h00,8'h00,8'h00,8'h00};
 			intr = 0;
@@ -49,6 +49,7 @@ module TxFIFo(
 		end
 	end
 	
+	assign tmit = ~(storage[0] == 8'h00);
 	assign ssptxintr = intr;
 	assign txdata = storage[0];
 endmodule 
