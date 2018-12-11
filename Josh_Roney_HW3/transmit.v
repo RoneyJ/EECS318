@@ -8,7 +8,7 @@ module transmit(
 	output remove		//signal to TxFIFO to shift its reg and output new data
 	);
 	
-	reg rmv;				//reg to hold value of remove
+	reg rmv, rem;				//reg to hold value of remove
 	reg clk;				//reg to hold value of sspclkout
 	reg fss;				//reg to hold value of sspfssout
 	reg bit;				//reg to hold value of ssptxd
@@ -28,6 +28,7 @@ module transmit(
 	initial
 	begin
 		rmv = 0;
+		rem = 0;
 		clk = 0;
 		fss = 0;
 		bit = 0;
@@ -38,11 +39,15 @@ module transmit(
 	always @(posedge pclk)
 	begin
 		clk = ~clk;
+		if(rmv && ~rem)
+			rem = 1;
+		else if(rmv && rem)
+			rem = 0;
 	end
 	
 	always @(posedge clk or clear_b)
 	begin
-		if(clear_b)
+		if(~clear_b)
 		begin
 			rmv = 0;
 			fss = 0;
@@ -129,5 +134,5 @@ module transmit(
 	assign ssptxd = bit;
 	assign sspfssout = fss;
 	assign sspclkout = clk;
-	assign remove = rmv;
-endmodule 
+	assign remove = rem;
+endmodule

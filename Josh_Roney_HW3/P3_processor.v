@@ -112,7 +112,7 @@ begin
 	mem[7] = 32'h70801001;	//shift regfile[1] left
 	mem[8] = 32'h70001002;	//shift regfile[2] right
 
-	mem[9] = 32'h3200000b;	//branch is even
+	mem[9] = 32'h3200000b;	//branch if even
 	mem[10] = 32'h50001000;	//add regfile[1] to regfile[0]
 	mem[11] = 32'h70801001;	//shift regfile[1] left
 	mem[12] = 32'h70001002;	//shift regfile[2] right

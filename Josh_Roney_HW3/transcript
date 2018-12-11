@@ -1,3 +1,4 @@
+# vsim -c ssp_test2 
 # //  QuestaSim-64 6.5f Jun 16 2010 Linux 4.15.0-36-generic
 # //
 # //  Copyright 1991-2010 Mentor Graphics Corporation
@@ -8,31 +9,30 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim P1_processor 
-# Loading work.P1_processor
-add wave \
-{sim/:P1_processor:clk } \
-{sim/:P1_processor:fetch } \
-{sim/:P1_processor:decode } \
-{sim/:P1_processor:execute } \
-{sim/:P1_processor:writeback } \
-{sim/:P1_processor:opcode } \
-{sim/:P1_processor:cc } \
-{sim/:P1_processor:src_type } \
-{sim/:P1_processor:dest_type } \
-{sim/:P1_processor:src_addr } \
-{sim/:P1_processor:dest_addr } \
-{sim/:P1_processor:PC } \
-{sim/:P1_processor:i } \
-{sim/:P1_processor:j } \
-{sim/:P1_processor:instr } \
-{sim/:P1_processor:data } \
-{sim/:P1_processor:PSR } \
-{sim/:P1_processor:mem } \
-{sim/:P1_processor:regfile } \
-{sim/:P1_processor:sum } 
-run -all
-# ** Note: $finish    : P1_processor.v(333)
-#    Time: 31 fs  Iteration: 1  Instance: :P1_processor
-# 1
-# Break in Module P1_processor at P1_processor.v line 333
+# Loading work.ssp_test2
+# Loading work.SSP
+# Loading work.TxFIFO
+# Loading work.transmit
+# Loading work.receive
+# Loading work.RxFIFO
+# data_in = xx 	 data_out = xx 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = ff 	 data_out = xx 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 94 	 data_out = xx 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 0f 	 data_out = xx 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 51 	 data_out = xx 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 24 	 data_out = xx 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 24 	 data_out = xx 	 ssptxintr = 1 	 ssprxintr = 0
+# data_in = 67 	 data_out = xx 	 ssptxintr = 1 	 ssprxintr = 0
+# data_in = f3 	 data_out = xx 	 ssptxintr = 1 	 ssprxintr = 0
+# data_in = b6 	 data_out = xx 	 ssptxintr = 1 	 ssprxintr = 0
+# data_in = 84 	 data_out = xx 	 ssptxintr = 1 	 ssprxintr = 0
+# data_in = 84 	 data_out = xx 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 84 	 data_out = 94 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 84 	 data_out = 94 	 ssptxintr = 1 	 ssprxintr = 0
+# data_in = 84 	 data_out = 94 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 84 	 data_out = 94 	 ssptxintr = 0 	 ssprxintr = 1
+# data_in = 84 	 data_out = 0f 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 84 	 data_out = 51 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 84 	 data_out = 24 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 84 	 data_out = 84 	 ssptxintr = 0 	 ssprxintr = 0
+# data_in = 84 	 data_out = 00 	 ssptxintr = 0 	 ssprxintr = 0

@@ -9,13 +9,16 @@ module RxFIFO(
 	);
 	
 	reg [7:0] storage [0:3];	//4 8-bit registers for storage
-	reg [7:0] out;					//output data
-	reg int;							//interrupt signal
-	integer place;					//placeholder for free space in storage
+	reg [7:0] out;			//output data
+	reg intr;			//interrupt signal
+	integer place;			//placeholder for free space in storage
 	
 	initial
 	begin
-		storage = {8'h00, 8'h00, 8'h00, 8'h00};
+		storage[0] = 8'h00;
+		storage[1] = 8'h00;
+		storage[2] = 8'h00;
+		storage[3] = 8'h00;
 		intr = 0;
 		place = 0;
 	end
@@ -24,7 +27,10 @@ module RxFIFO(
 	begin
 		if(~clear_b)
 		begin
-			storage = {8'h00, 8'h00, 8'h00, 8'h00};
+			storage[0] = 8'h00;
+			storage[1] = 8'h00;
+			storage[2] = 8'h00;
+			storage[3] = 8'h00;
 			intr = 0;
 			place = 0;
 		end
@@ -42,10 +48,13 @@ module RxFIFO(
 			if(psel && ~pwrite)	//if psel is high and pwrite is low, output data
 			begin
 				out = storage[0];
-				storage = {8'h00, storage[3:1]};	//shift the reg right
+				storage[0] = storage[1];
+				storage[1] = storage[2];
+				storage[2] = storage[3];
+				storage[3] = 8'h00;	
 				place = place - 1;
 			
-				if(intr $$ (place == 0))
+				if(intr && (place < 4))
 					intr = 0;
 			end
 		end
@@ -53,4 +62,4 @@ module RxFIFO(
 	
 	assign prdata = out;	//storage[0] & psel & ~pwrite;
 	assign ssprxintr = intr;
-endmodule 
+endmodule

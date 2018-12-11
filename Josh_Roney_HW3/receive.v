@@ -7,7 +7,7 @@ module receive(
 	);
 	
 	reg [7:0] data;	//storage for output data
-	reg done;			//reg to hold value of rcv
+	reg done, rec;			//reg to hold value of rcv
 	reg [3:0] state;	//state variable
 	localparam [3:0]
 		S0 = 4'b0000,
@@ -23,13 +23,24 @@ module receive(
 	initial
 	begin
 		data = 8'h00;
+		rec = 0;
 		done = 0;
 		state = S0;
+	end
+
+	always @(posedge pclk)
+	begin
+		if(done && ~rec)
+			rec = 1;
+		else if(done && rec)
+			rec = 0;
+		else if(~done)
+			rec = 0;
 	end
 	
 	always @(posedge sspclkin or clear_b)
 	begin
-		if(clear_b)
+		if(~clear_b)
 		begin
 			data = 8'h00;
 			done = 0;
@@ -40,11 +51,9 @@ module receive(
 		case(state)
 			S0:
 			begin
+				done = 0;
 				if(sspfssin)
-				begin
-					done = 0;
 					state = S1;
-				end
 			end
 			
 			S1:
@@ -98,7 +107,7 @@ module receive(
 		endcase
 	end
 	
-	assign rcv = done;
+	assign rcv = rec;
 	assign rxdata = data;
 	
-endmodule;
+endmodule
