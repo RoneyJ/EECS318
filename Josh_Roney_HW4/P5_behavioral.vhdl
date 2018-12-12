@@ -6,7 +6,7 @@ entity behavioralFSM is
 end entity;
 
 architecture fsm of behavioralFSM is
-	variable state is bit_vector (1 downto 0) := "00";
+	variable state : bit_vector (1 downto 0) := "00";
 	
 	begin
 	process (clk) is
@@ -26,7 +26,7 @@ architecture fsm of behavioralFSM is
 			out <= '0';
 			
 			if(e = '1') then
-				state := "10"
+				state := "10";
 			end if;
 		
 		when "10" =>	--state 2
@@ -44,7 +44,7 @@ architecture fsm of behavioralFSM is
 			end if;
 	end case;
 	end process;
-end architecture
+end architecture;
 
 --testbench for FSM
 entity testP5b is
