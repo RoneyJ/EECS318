@@ -13,35 +13,16 @@ architecture fsm of behavioralFSM is
 	case state is
 		when "00" =>	--state 0
 			out <= '1';
-			
-			if(e = '0' and w = '1') then
-				state := "01";
-			elsif() then
-				state := "10";
-			elsif() then
-				state := "11";
-			end if;
 		
 		when "01" =>	--state 1
 			out <= '0';
-			
-			if(e = '1') then
-				state := "10";
-			end if;
 		
 		when "10" =>	--state 2
 			out <= '0';
-			
-			if(e = '0' and w = '0') then
-				state := "00";
-			end if;
 		
 		when "11" =>	--state 3
 			out := '0';
 			
-			if(w = '0') then
-				state := "10";
-			end if;
 	end case;
 	end process;
 end architecture;
