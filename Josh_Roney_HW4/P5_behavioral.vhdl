@@ -10,7 +10,7 @@ architecture fsm of behavioralFSM is
 	
 	begin
 	process (clk) is
-	C: case state is
+	case state is
       when "00" => 
 			o <= '1';
 			
@@ -25,25 +25,25 @@ architecture fsm of behavioralFSM is
       when "01" => 
 			o <= '0';
 			
-			if(e = '1')
+			if(e = '1') then
 				state := "10";
 			end if;
 			
       when "10" => 
 			o <= '0';
 			
-			if(e = '0' and w = '0')
+			if(e = '0' and w = '0') then
 				state := "00";
 			end if;
 			
       when "11" => 
 			o <= '0';
 			
-			if(w = '0')
+			if(w = '0') then
 				state := "10";
 			end if;
 			
-  end case C;
+  end case;
 	end process;
 end architecture;
 
