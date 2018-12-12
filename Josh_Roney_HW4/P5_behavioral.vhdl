@@ -6,10 +6,9 @@ entity behavioralFSM is
 end entity;
 
 architecture fsm of behavioralFSM is
-	variable state : bit_vector (1 downto 0) := "00";
-	
 	begin
 	process (clk) is
+	variable state : bit_vector (1 downto 0) := "00";
 	begin
 	case state is
       when "00" => 
