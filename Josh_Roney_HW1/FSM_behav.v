@@ -1,7 +1,7 @@
 module FSM_behav(out, reset, E, W, clk); //Case statement needed
 	input E, W, clk, reset;
 	output out;
-	reg Q1, Q2, z;
+	reg z;
 
 	reg [1:0] State;
 	localparam [1:0]
