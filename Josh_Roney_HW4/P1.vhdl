@@ -66,7 +66,6 @@ end multiplier;
 --testbench for multiplier
 entity testP1 is
 end testP1;
-
 architecture test of testP1 is
 	signal m,n : bit_vector (3 downto 0);
 	signal product : bit_vector (7 downto 0); 

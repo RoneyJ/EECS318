@@ -8,13 +8,17 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim testp4 
+# vsim testp2 
 # Loading std.standard
-# Loading work.testp4(test)
-# Loading work.csa(carrysave)
-# Loading work.add(arch)
-add wave sim/:testp4:*
+# Loading work.testp2(test)
+# Loading work.shiftadd(mult)
+# Loading work.nbitand(arch)
+# Loading work.nadd(add)
+# Loading work.ncombine(combine)
+# Loading work.rightshift(rshift)
+add wave sim/:testp2:add:*
+run
 run
 # ** Failure: simulation finished successfully
-#    Time: 40 fs  Iteration: 0  Process: :testp4:line__112 File: P4.vhdl
-# Break in Process line__112 at P4.vhdl line 122
+#    Time: 120 fs  Iteration: 0  Process: :testp2:code File: P2.vhdl
+# Break in Process code at P2.vhdl line 206
